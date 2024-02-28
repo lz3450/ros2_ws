@@ -6,3 +6,9 @@ if [[ -f "$ROS2_SETUP" ]]; then
     echo "ros2_humble (bash)"
     source "$ROS2_SETUP"
 fi
+
+AT_WS="/home/kzl/Projects/AutoTrace/at_ws/install/local_setup.bash"
+if [[ -f "$AT_WS" ]]; then
+    echo "at_ws (bash)"
+    source "$AT_WS"
+fi
