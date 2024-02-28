@@ -306,6 +306,7 @@ python3-lark
 python3-numpy
 python3-pyqt5
 python3-pyqt5.sip
+python3-pyqt5.qtsvg
 python3-python-qt-binding
 python3-sip
 python3-sip-dev
