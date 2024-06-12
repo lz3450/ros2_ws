@@ -1,4 +1,4 @@
-ROS2_WS="/home/kzl/Projects/ros2_ws"
+ROS2_WS="$(cd "$(dirname "${(%):-%N}")" && pwd)"
 
 ROS2_SETUP="$ROS2_WS/ros2_humble/install/local_setup.zsh"
 if [[ -f "$ROS2_SETUP" ]]; then
