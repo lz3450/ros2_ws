@@ -42,6 +42,7 @@ sudo apt-get install -y \
     qtbase5-dev \
     python3-python-qt-binding \
     libshiboken2-dev \
-    libpyside2-py3-5.15
+    libpyside2-py3-5.15 \
+    liborocos-kdl-dev
 
 # rosdep install --from-paths src --ignore-src --rosdistro=humble --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers" -s
