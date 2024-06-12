@@ -1,0 +1,29 @@
+repositories:
+  turtlebot4:
+    type: git
+    url: https://github.com/turtlebot/turtlebot4.git
+    version: humble
+  turtlebot4_desktop:
+    type: git
+    url: https://github.com/turtlebot/turtlebot4_desktop.git
+    version: humble
+  # turtlebot4_simulator:
+  #   type: git
+  #   url: https://github.com/turtlebot/turtlebot4_simulator.git
+  #   version: humble
+  create3_sim:
+    type: git
+    url: https://github.com/iRobotEducation/create3_sim.git
+    version: humble
+  angles:
+    type: git
+    url: https://github.com/ros/angles.git
+    version: ros2
+  irobot_create_msgs:
+    type: git
+    url: https://github.com/iRobotEducation/irobot_create_msgs.git
+    version: humble
+  control_msgs:
+    type: git
+    url: https://github.com/ros-controls/control_msgs.git
+    version: humble
