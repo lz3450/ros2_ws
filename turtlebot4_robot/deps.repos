@@ -63,3 +63,7 @@ repositories:
     type: git
     url: https://github.com/clearpathrobotics/simple-term-menu.git
     version: humble
+  robot_upstart:
+    type: git
+    url: https://github.com/clearpathrobotics/robot_upstart.git
+    version: foxy-devel
