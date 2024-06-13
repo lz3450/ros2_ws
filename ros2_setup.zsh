@@ -8,6 +8,12 @@ if [[ -f "$ROS2_SETUP" ]]; then
     source "$ROS2_SETUP"
 fi
 
+TURTLEBOT4_ROBOT_WS="/home/kzl/Projects/turtlebot4_robot"
+if [[ -f "$TURTLEBOT4_ROBOT_WS/install/local_setup.zsh" ]]; then
+    echo "turtlebot4_robot (zsh)"
+    source "$TURTLEBOT4_ROBOT_WS/install/local_setup.zsh"
+fi
+
 AT_WS="/home/kzl/Projects/AutoTrace/at_ws/install/local_setup.zsh"
 if [[ -f "$AT_WS" ]]; then
     echo "at_ws (zsh)"
