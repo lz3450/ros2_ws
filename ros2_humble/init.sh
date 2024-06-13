@@ -23,26 +23,3 @@ vcs import --input https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos
 
 sudo rosdep init || :
 rosdep update
-
-sudo apt-get install -y \
-    libacl1-dev \
-    libasio-dev \
-    libtinyxml2-dev \
-    libx11-dev \
-    libxaw7-dev \
-    libeigen3-dev \
-    libcurl4-openssl-dev \
-    libfreetype6-dev \
-    libgl-dev \
-    libxrandr-dev \
-    libbullet-dev \
-    libopencv-dev \
-    python3-lark \
-    python3-numpy \
-    qtbase5-dev \
-    python3-python-qt-binding \
-    libshiboken2-dev \
-    libpyside2-py3-5.15 \
-    liborocos-kdl-dev
-
-# rosdep install --from-paths src --ignore-src --rosdistro=humble --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers" -s

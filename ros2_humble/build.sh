@@ -6,10 +6,9 @@ mkdir -p src
 vcs import --input https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos src
 
 export PATH="/usr/bin:/opt/llvm-project/bin"
-export MAKEFLAGS="-j $(($(nproc) / 2))"
+export MAKEFLAGS="-j $(nproc)"
 colcon build \
     --symlink-install \
-    --parallel-workers 2 \
-    --continue-on-error \
-    --packages-skip-build-finished
+    --parallel-workers $(nproc)
+
 # colcon build --build-base build-merge --install-base install-merge --merge-install --symlink-install --parallel-workers 2 --continue-on-error --packages-skip-build-finished
