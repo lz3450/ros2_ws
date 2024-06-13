@@ -14,6 +14,14 @@ if [[ -f "$TURTLEBOT4_ROBOT_WS/install/local_setup.bash" ]]; then
     source "$TURTLEBOT4_ROBOT_WS/install/local_setup.bash"
 fi
 
+ROBOT_SETUP="/etc/turtlebot4/setup.bash"
+if [ -f "$ROBOT_SETUP" ]; then
+    echo "turtlebot4_setup (bash)"
+    export ROBOT_SETUP
+    # source "$ROBOT_SETUP"
+    source "/etc/turtlebot4/aliases.bash"
+fi
+
 AT_WS="$ROS2_WS/../AutoTrace/at_ws/install/local_setup.bash"
 if [[ -f "$AT_WS" ]]; then
     echo "at_ws (bash)"
