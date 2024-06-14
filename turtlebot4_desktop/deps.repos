@@ -27,3 +27,55 @@ repositories:
     type: git
     url: https://github.com/ros-controls/control_msgs.git
     version: humble
+  navigation2:
+    type: git
+    url: https://github.com/ros-planning/navigation2.git
+    version: humble
+  bond_core:
+    type: git
+    url: https://github.com/ros/bond_core.git
+    version: ros2
+  BehaviorTree.CPP:
+    type: git
+    url: https://github.com/BehaviorTree/BehaviorTree.CPP.git
+    version: 3.8.6
+  diagnostic:
+    type: git
+    url: https://github.com/ros/diagnostics.git
+    version: ros2
+  ompl:
+    type: git
+    url: https://github.com/ompl/ompl.git
+    version: 1.6.0
+  vision_opencv:
+    type: git
+    url: https://github.com/ros-perception/vision_opencv.git
+    version: humble
+  ros_gz:
+    type: git
+    url: https://github.com/gazebosim/ros_gz.git
+    version: humble
+  actuator_msgs:
+    type: git
+    url: https://github.com/rudislabs/actuator_msgs.git
+    version: main
+  gps_umd:
+    type: git
+    url: https://github.com/swri-robotics/gps_umd.git
+    version: ros2-devel
+  vision_msgs:
+    type: git
+    url: https://github.com/ros-perception/vision_msgs.git
+    version: ros2
+  gazebo_ros_pkgs:
+    type: git
+    url: https://github.com/ros-simulation/gazebo_ros_pkgs.git
+    version: ros2
+  rqt_robot_monitor:
+      type: git
+      url: https://github.com/ros-visualization/rqt_robot_monitor.git
+      version: humble
+  slam_toolbox:
+    type: git
+    url: https://github.com/SteveMacenski/slam_toolbox.git
+    version: humble

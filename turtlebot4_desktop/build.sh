@@ -2,12 +2,10 @@
 
 source ../ros2_setup.bash
 
+mkdir -p src
 vcs import --input deps.repos src
 
-export MAKEFLAGS="-j $(($(nproc) / 2))"
+export MAKEFLAGS="-j $(nproc)"
 colcon build \
     --symlink-install \
-    --parallel-workers 2 \
-    --continue-on-error \
-    --packages-skip-build-finished \
-    --packages-skip "nav2_system_tests"
+    --parallel-workers $(nproc)
