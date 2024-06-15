@@ -14,6 +14,11 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-a
 
 sudo apt-get update
 
+sudo apt-get install -s \
+    python3-pip \
+    ros-dev-tools \
+    | grep "^Inst" | awk '{print $2}' | sort > init-pkgs.txt
+
 sudo apt-get install -y \
     python3-pip \
     ros-dev-tools
@@ -23,3 +28,7 @@ vcs import --input https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos
 
 sudo rosdep init || :
 rosdep update
+
+rosdep install --from-paths src --ignore-src -s --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"  | sed '1d' | awk '{print $5}' | sort > rosdep.txt
+xargs -a rosdep.txt sudo apt-get install -s | grep "^Inst" | awk '{print $2}' | sort > rosdep-pkgs.txt
+rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"
