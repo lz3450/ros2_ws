@@ -7,7 +7,7 @@ set -e
 sudo apt-get update
 sudo apt-get upgrade -y
 
-sudo apt-get install -y curl
+sudo apt-get install -y apt-utils curl
 sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
 
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
@@ -31,4 +31,4 @@ rosdep update
 
 rosdep install --from-paths src --ignore-src -s --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"  | sed '1d' | awk '{print $5}' | sort -n > rosdep.txt
 xargs -a rosdep.txt sudo apt-get install -s | grep "^Inst" | awk '{print $2}' | sort -n > rosdep-pkgs.txt
-rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"
+xargs -a rosdep.txt sudo apt-get install -y
