@@ -16,10 +16,6 @@ RUN ssh-keygen -A
 # Enable and start SSH service
 RUN mkdir /run/sshd
 
-# Allow password authentication (optional, ensure to configure securely)
-RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
-    sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
-
 # Switch to user kzl
 USER kzl
 WORKDIR /home/kzl
@@ -40,3 +36,6 @@ EXPOSE 22
 
 # Set entrypoint to run sshd
 ENTRYPOINT ["/usr/sbin/sshd", "-D"]
+
+# docker build --no-cache -t ros2:init .
+# docker run --name ROS2 -h ROS2 -d -p 2222:22 --rm -u root ros2:init
