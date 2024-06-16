@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ../ros2_setup.bash
+source ../ros2_setup.sh
 
 mkdir -p src
 vcs import --input deps.repos src

@@ -2,22 +2,14 @@
 
 set -e
 
-sudo apt-get update
-sudo apt-get upgrade -y
-
-sudo apt-get install -y \
-    libignition-math6-dev \
-    libgraphicsmagick++1-dev \
-    libzmq3-dev \
-    libxtensor-dev \
-    libceres-dev \
-    libignition-plugin-dev \
-    libignition-common4-dev \
-    libignition-gazebo6-dev \
-    libignition-transport11-dev \
-    libboost-all-dev \
-    libboost-python-dev \
-    libgps-dev \
-    libgazebo-dev
+# sudo apt-get update
+# sudo apt-get upgrade -y
 
 mkdir -p src
+vcs import --input deps.repos src
+
+source ../ros2_setup.sh
+
+rosdep install --from-paths src --ignore-src -s | awk '{print $5}' | sed -E '/^\s*$/d' | sort -n > rosdep.txt
+grep -v 'ros-' rosdep.txt | xargs sudo apt-get install -s | grep "^Inst" | awk '{print $2}' | sort -n > rosdep-pkgs.txt
+grep -v 'ros-' rosdep.txt | xargs sudo apt-get install -y
