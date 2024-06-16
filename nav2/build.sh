@@ -2,7 +2,7 @@
 
 set -e
 
-source ../ros2_setup.bash
+source ../ros2_setup.sh
 
 COMMON_OPTIONS=(
     --symlink-install
