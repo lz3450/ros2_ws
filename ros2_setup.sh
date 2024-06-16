@@ -1,8 +1,8 @@
 if [ -n "$BASH_VERSION" ]; then
-    export ROOTDIR="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1; pwd -P)"
+    export ROS2_WS="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1; pwd -P)"
     shell="bash"
 elif [ -n "$ZSH_VERSION" ]; then
-    export ROOTDIR="$(cd -- "$(dirname "${(%):-%x}")" >/dev/null 2>&1; pwd -P)"
+    export ROS2_WS="$(cd -- "$(dirname "${(%):-%x}")" >/dev/null 2>&1; pwd -P)"
     shell="zsh"
 else
   echo "Unsupported shell"
@@ -14,6 +14,12 @@ if [[ -f "$ROS2_SETUP" ]]; then
     # export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
     echo "ros2_humble ($shell)"
     source "$ROS2_SETUP"
+fi
+
+NAV2_WS="$ROS2_WS/nav2"
+if [[ -f "$NAV2_WS/install/local_setup.$shell" ]]; then
+    echo "nav2 ($shell)"
+    source "$NAV2_WS/install/local_setup.$shell"
 fi
 
 TURTLEBOT4_DESKTOP_WS="$ROS2_WS/turtlebot4_desktop"
