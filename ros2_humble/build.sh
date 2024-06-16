@@ -9,6 +9,7 @@ COMMON_OPTIONS=(
     # --packages-skip-build-finished
 )
 
+export CMAKE_COMMAND="/usr/bin/cmake"
 export MAKEFLAGS="-j $(nproc)"
 
 colcon build \
