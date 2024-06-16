@@ -9,6 +9,8 @@ libdart-external-ikfast-dev
 libdart-utils-dev
 libdart-utils-urdf6.12
 libdart-utils-urdf-dev
+libdw-dev
+libelf-dev
 libgps28
 libgps-dev
 libignition-common4
