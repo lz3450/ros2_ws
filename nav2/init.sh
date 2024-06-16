@@ -2,14 +2,14 @@
 
 set -e
 
-# sudo bash -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
-# curl http://packages.osrfoundation.org/gazebo.key | gpg --dearmor | sudo install -o root -g root -m 644 /dev/stdin /etc/apt/trusted.gpg.d/gazebo.gpg
+sudo bash -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+curl http://packages.osrfoundation.org/gazebo.key | gpg --dearmor | sudo install -o root -g root -m 644 /dev/stdin /etc/apt/trusted.gpg.d/gazebo.gpg
 
-# sudo apt-get update
-# sudo apt-get upgrade -y
+sudo apt-get update
+sudo apt-get upgrade -y
 
-# mkdir -p src
-# vcs import --input deps.repos src
+mkdir -p src
+vcs import --input deps.repos src
 
 source ../ros2_setup.sh
 
