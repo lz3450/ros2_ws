@@ -1,6 +1,4 @@
 acl
-clang-format
-clang-tidy
 cppcheck
 doxygen
 google-mock
@@ -35,8 +33,8 @@ libshiboken2-dev
 libspdlog-dev
 libsqlite3-dev
 libssl-dev
-libtinyxml2-dev
 libtinyxml-dev
+libtinyxml2-dev
 libx11-dev
 libxaw7-dev
 libxml2-utils

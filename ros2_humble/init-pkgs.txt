@@ -15,11 +15,11 @@ libjs-jquery-isonscreen
 libjs-jquery-metadata
 libjs-jquery-tablesorter
 libjs-jquery-throttle-debounce
-libjsoncpp25
 libjs-sphinxdoc
 libjs-underscore
-libpython3.10-dev
+libjsoncpp25
 libpython3-dev
+libpython3.10-dev
 libraqm0
 librhash0
 libserf-1-1
@@ -29,7 +29,6 @@ libuv1
 libwebpmux3
 mercurial
 mercurial-common
-python3.10-dev
 python3-argcomplete
 python3-blinker
 python3-bloom
@@ -115,6 +114,7 @@ python3-wadllib
 python3-wheel
 python3-wrapt
 python3-yaml
+python3.10-dev
 ros-build-essential
 ros-dev-tools
 subversion
