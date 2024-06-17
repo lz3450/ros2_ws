@@ -15,3 +15,13 @@ rosdep install \
     --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers" \
     -s \
     | awk '{print $5}' | sed -E '/^\s*$/d' | sort -n > rosdep.txt
+
+sed -e '/^clang-format$/d' \
+    -e '/^clang-tidy$/d' \
+    -e '/^cmake$/d' \
+    -e '/^curl$/d' \
+    -e '/^file$/d' \
+    -e '/^git$/d' \
+    -e '/^openssl$/d' \
+    -e '/^pkg-config$/d' \
+    -i rosdep.txt
