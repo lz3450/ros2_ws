@@ -23,6 +23,11 @@ repositories:
       type: git
       url: https://github.com/ros-visualization/rqt_robot_monitor.git
       version: humble
+  ### Simulation
+  # turtlebot4_simulator:
+  #   type: git
+  #   url: https://github.com/turtlebot/turtlebot4_simulator.git
+  #   version: humble
   # control_msgs:
   #   type: git
   #   url: https://github.com/ros-controls/control_msgs.git
@@ -111,15 +116,6 @@ repositories:
   #   type: git
   #   url: https://github.com/ros2/teleop_twist_keyboard.git
   #   version: dashing
-  ###
-  # turtlebot4_simulator:
-  #   type: git
-  #   url: https://github.com/turtlebot/turtlebot4_simulator.git
-  #   version: humble
-  # create3_sim:
-  #   type: git
-  #   url: https://github.com/iRobotEducation/create3_sim.git
-  #   version: humble
   # gazebo_ros2_control:
   #   type: git
   #   url: https://github.com/ros-simulation/gazebo_ros2_control.git
