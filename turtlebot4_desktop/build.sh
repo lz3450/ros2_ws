@@ -1,11 +1,24 @@
 #!/bin/bash
 
+set -e
+
 source ../ros2_setup.sh
 
-mkdir -p src
-vcs import --input deps.repos src
+COMMON_OPTIONS=(
+    --symlink-install
+    --parallel-workers $(nproc)
+    # --continue-on-error
+    # --packages-skip-build-finished
+)
 
 export MAKEFLAGS="-j $(nproc)"
+
 colcon build \
-    --symlink-install \
-    --parallel-workers $(nproc)
+    "${COMMON_OPTIONS[@]}"
+
+# colcon build \
+#     --build-base build-merge \
+#     --install-base install-merge \
+#     --merge-install \
+#     "${COMMON_OPTIONS[@]}"
+
