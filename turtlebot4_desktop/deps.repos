@@ -7,106 +7,110 @@ repositories:
     type: git
     url: https://github.com/turtlebot/turtlebot4_desktop.git
     version: humble
+  create3_sim:
+    type: git
+    url: https://github.com/iRobotEducation/create3_sim.git
+    version: humble
   irobot_create_msgs:
     type: git
     url: https://github.com/iRobotEducation/irobot_create_msgs.git
     version: humble
-  control_msgs:
-    type: git
-    url: https://github.com/ros-controls/control_msgs.git
-    version: humble
-  ros2_controllers:
-    type: git
-    url: https://github.com/ros-controls/ros2_controllers.git
-    version: humble
-  ros_gz:
-    type: git
-    url: https://github.com/gazebosim/ros_gz.git
-    version: humble
-  rqt_robot_monitor:
-      type: git
-      url: https://github.com/ros-visualization/rqt_robot_monitor.git
-      version: humble
   joint_state_publisher:
     type: git
     url: https://github.com/ros/joint_state_publisher.git
     version: ros2
-  xacro:
-    type: git
-    url: https://github.com/ros/xacro.git
-    version: ros2
-  RSL:
-    type: git
-    url: https://github.com/PickNikRobotics/RSL.git
-    version: main
-  vision_msgs:
-    type: git
-    url: https://github.com/ros-perception/vision_msgs.git
-    version: ros2
-  actuator_msgs:
-    type: git
-    url: https://github.com/rudislabs/actuator_msgs.git
-    version: main
-  gps_umd:
-    type: git
-    url: https://github.com/swri-robotics/gps_umd.git
-    version: ros2-devel
-  ros2_control:
-    type: git
-    url: https://github.com/ros-controls/ros2_control.git
-    version: humble
-  control_toolbox:
-    type: git
-    url: https://github.com/ros-controls/control_toolbox.git
-    version: ros2-master
-  gz_ros2_control:
-    type: git
-    url: https://github.com/ros-controls/gz_ros2_control.git
-    version: humble
-  realtime_tools:
-    type: git
-    url: https://github.com/ros-controls/realtime_tools.git
-    version: master
-  kinematics_interface:
-    type: git
-    url: https://github.com/ros-controls/kinematics_interface.git
-    version: humble
-  sdformat_urdf:
-    type: git
-    url: https://github.com/ros/sdformat_urdf.git
-    version: humble
-  ackermann_msgs:
-    type: git
-    url: https://github.com/ros-drivers/ackermann_msgs.git
-    version: ros2
-  filters:
-    type: git
-    url: https://github.com/ros/filters.git
-    version: ros2
-  generate_parameter_library:
-    type: git
-    url: https://github.com/PickNikRobotics/generate_parameter_library.git
-    version: main
-  rqt_image_view:
-    type: git
-    url: https://github.com/ros-visualization/rqt_image_view.git
-    version: humble-devel
-  cpp_polyfills:
-    type: git
-    url: https://github.com/PickNikRobotics/cpp_polyfills.git
-    version: main
-  image_transport_plugins:
-    type: git
-    url: https://github.com/ros-perception/image_transport_plugins.git
-    version: humble
-  backward_ros:
-    type: git
-    url: https://github.com/pal-robotics/backward_ros.git
-    version: foxy-devel
-  teleop_twist_keyboard:
-    type: git
-    url: https://github.com/ros2/teleop_twist_keyboard.git
-    version: dashing
+  rqt_robot_monitor:
+      type: git
+      url: https://github.com/ros-visualization/rqt_robot_monitor.git
+      version: humble
+  # control_msgs:
+  #   type: git
+  #   url: https://github.com/ros-controls/control_msgs.git
+  #   version: humble
+  # ros2_controllers:
+  #   type: git
+  #   url: https://github.com/ros-controls/ros2_controllers.git
+  #   version: humble
+  # ros_gz:
+  #   type: git
+  #   url: https://github.com/gazebosim/ros_gz.git
+  #   version: humble
+  # xacro:
+  #   type: git
+  #   url: https://github.com/ros/xacro.git
+  #   version: ros2
+  # RSL:
+  #   type: git
+  #   url: https://github.com/PickNikRobotics/RSL.git
+  #   version: main
+  # vision_msgs:
+  #   type: git
+  #   url: https://github.com/ros-perception/vision_msgs.git
+  #   version: ros2
+  # actuator_msgs:
+  #   type: git
+  #   url: https://github.com/rudislabs/actuator_msgs.git
+  #   version: main
+  # gps_umd:
+  #   type: git
+  #   url: https://github.com/swri-robotics/gps_umd.git
+  #   version: ros2-devel
+  # ros2_control:
+  #   type: git
+  #   url: https://github.com/ros-controls/ros2_control.git
+  #   version: humble
+  # control_toolbox:
+  #   type: git
+  #   url: https://github.com/ros-controls/control_toolbox.git
+  #   version: ros2-master
+  # gz_ros2_control:
+  #   type: git
+  #   url: https://github.com/ros-controls/gz_ros2_control.git
+  #   version: humble
+  # realtime_tools:
+  #   type: git
+  #   url: https://github.com/ros-controls/realtime_tools.git
+  #   version: master
+  # kinematics_interface:
+  #   type: git
+  #   url: https://github.com/ros-controls/kinematics_interface.git
+  #   version: humble
+  # sdformat_urdf:
+  #   type: git
+  #   url: https://github.com/ros/sdformat_urdf.git
+  #   version: humble
+  # ackermann_msgs:
+  #   type: git
+  #   url: https://github.com/ros-drivers/ackermann_msgs.git
+  #   version: ros2
+  # filters:
+  #   type: git
+  #   url: https://github.com/ros/filters.git
+  #   version: ros2
+  # generate_parameter_library:
+  #   type: git
+  #   url: https://github.com/PickNikRobotics/generate_parameter_library.git
+  #   version: main
+  # rqt_image_view:
+  #   type: git
+  #   url: https://github.com/ros-visualization/rqt_image_view.git
+  #   version: humble-devel
+  # cpp_polyfills:
+  #   type: git
+  #   url: https://github.com/PickNikRobotics/cpp_polyfills.git
+  #   version: main
+  # image_transport_plugins:
+  #   type: git
+  #   url: https://github.com/ros-perception/image_transport_plugins.git
+  #   version: humble
+  # backward_ros:
+  #   type: git
+  #   url: https://github.com/pal-robotics/backward_ros.git
+  #   version: foxy-devel
+  # teleop_twist_keyboard:
+  #   type: git
+  #   url: https://github.com/ros2/teleop_twist_keyboard.git
+  #   version: dashing
   ###
   # turtlebot4_simulator:
   #   type: git
