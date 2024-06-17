@@ -21,4 +21,3 @@ colcon build \
 #     --install-base install-merge \
 #     --merge-install \
 #     "${COMMON_OPTIONS[@]}"
-
