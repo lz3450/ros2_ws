@@ -17,7 +17,6 @@ libtheora-dev
 libusb-1.0-0-dev
 libx11-dev
 nlohmann-json3-dev
-pkg-config
 python3-numpy
 python3-opencv
 python3-packaging
