@@ -2,16 +2,13 @@ clang-tidy
 cmake
 doxygen
 git
-libboost-all-dev
 libboost-dev
 libdw-dev
 libeigen3-dev
 libfmt-dev
 libgflags-dev
 libgps-dev
-libignition-common4-dev
 libignition-gazebo6-dev
-libignition-gui6-dev
 libignition-math6-dev
 libignition-msgs8-dev
 libignition-plugin-dev
@@ -34,5 +31,5 @@ python3-rospkg
 python3-rospkg-modules
 python3-typeguard
 python3-yaml
-qml-module-qtquick-extras
 qtbase5-dev
+ros-humble-irobot-create-description
