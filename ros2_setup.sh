@@ -32,14 +32,14 @@ TURTLEBOT4_ROBOT_WS="$ROS2_WS/turtlebot4_robot"
 if [[ -f "$TURTLEBOT4_ROBOT_WS/install/local_setup.$shell" ]]; then
     echo "turtlebot4_robot ($shell)"
     source "$TURTLEBOT4_ROBOT_WS/install/local_setup.$shell"
-fi
 
-ROBOT_SETUP="/etc/turtlebot4/setup.$shell"
-if [ -f "$ROBOT_SETUP" ]; then
-    echo "turtlebot4_setup ($shell)"
-    export ROBOT_SETUP
-    source "$ROBOT_SETUP"
-    source "/etc/turtlebot4/aliases.bash"
+    ROBOT_SETUP="/etc/turtlebot4/setup.$shell"
+    if [ -f "$ROBOT_SETUP" ]; then
+        echo "turtlebot4_setup ($shell)"
+        export ROBOT_SETUP
+        source "$ROBOT_SETUP"
+        source "/etc/turtlebot4/aliases.bash"
+    fi
 fi
 
 AT_WS="$ROS2_WS/../AutoTrace/at_ws/install/local_setup.$shell"
