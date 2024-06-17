@@ -1,5 +1,4 @@
 graphicsmagick-libmagick-dev-compat
-lcov
 libbenchmark-dev
 libboost-all-dev
 libboost-dev
@@ -33,7 +32,5 @@ python3-psutil
 python3-pytest
 python3-setuptools
 python3-yaml
-python3-zmq
 qtbase5-dev
-ros-humble-gazebo-ros-pkgs
 uuid-dev

@@ -9,7 +9,6 @@ COMMON_OPTIONS=(
     --parallel-workers $(nproc)
     # --continue-on-error
     # --packages-skip-build-finished
-    --packages-skip "nav2_system_tests"
 )
 
 export MAKEFLAGS="-j $(nproc)"
