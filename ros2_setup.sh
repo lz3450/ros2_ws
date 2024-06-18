@@ -33,12 +33,12 @@ if [[ -f "$TURTLEBOT4_ROBOT_WS/install/local_setup.$shell" ]]; then
     echo "turtlebot4_robot ($shell)"
     source "$TURTLEBOT4_ROBOT_WS/install/local_setup.$shell"
 
-    ROBOT_SETUP="/etc/turtlebot4/setup.$shell"
+    ROBOT_SETUP="/etc/turtlebot4/setup.bash"
     if [ -f "$ROBOT_SETUP" ]; then
         echo "turtlebot4_setup ($shell)"
         export ROBOT_SETUP
         source "$ROBOT_SETUP"
-        source "/etc/turtlebot4/aliases.bash"
+        # source "/etc/turtlebot4/aliases.bash"
     fi
 fi
 
