@@ -37,8 +37,6 @@ if [[ -f "$TURTLEBOT4_ROBOT_WS/install/local_setup.$shell" ]]; then
     if [ -f "$ROBOT_SETUP" ]; then
         echo "turtlebot4_setup ($shell)"
         export ROBOT_SETUP
-        source "$ROBOT_SETUP"
-        # source "/etc/turtlebot4/aliases.bash"
     fi
 fi
 
