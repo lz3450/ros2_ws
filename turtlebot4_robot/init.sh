@@ -6,7 +6,7 @@ sudo apt-get update
 sudo apt-get upgrade -y
 
 mkdir -p src
-vcs import --input deps.repos src
+vcs import --recursive --input deps.repos src
 if [[ -f "unnecessary_ros2_pkgs.txt" ]]; then
     xargs -a unnecessary_ros2_pkgs.txt -I {} rm -rf src/{}
 fi

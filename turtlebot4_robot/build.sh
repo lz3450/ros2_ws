@@ -2,35 +2,23 @@
 
 set -e
 
-source ../ros2_setup.bash
+source ../ros2_setup.sh
 
-vcs import --input deps.repos --recursive src
+COMMON_OPTIONS=(
+    --symlink-install
+    --parallel-workers $(nproc)
+    # --continue-on-error
+    # --packages-skip-build-finished
+)
 
-export MAKEFLAGS="-j $(nproc) / 2))"
+export MAKEFLAGS="-j $(nproc)"
+
 colcon build \
-    --symlink-install \
-    --parallel-workers 2 \
-    --continue-on-error \
-    --packages-skip-build-finished
-
-# COLCON_BUILD_OPTIONS=(
-#     --symlink-install
-#     --parallel-workers 2
-#     --continue-on-error
-#     --packages-skip-build-finished
-# )
+    "${COMMON_OPTIONS[@]}"
 
 # colcon build \
-#     "${COLCON_BUILD_OPTIONS[@]}" \
-#     --packages-skip-by-dep depthai \
-#     --packages-skip depthai
+#     --build-base build-merge \
+#     --install-base install-merge \
+#     --merge-install \
+#     "${COMMON_OPTIONS[@]}"
 
-# colcon build \
-#     "${COLCON_BUILD_OPTIONS[@]}" \
-#     --packages-select depthai \
-#     --cmake-args \
-#     -DHUNTER_ENABLED=OFF
-
-# colcon build \
-#     "${COLCON_BUILD_OPTIONS[@]}" \
-#     --packages-select-by-dep depthai
