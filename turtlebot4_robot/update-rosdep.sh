@@ -2,8 +2,9 @@
 
 set -e
 
+rm -rf src
 mkdir -p src
-vcs import --recursive --input deps.repos src
+vcs import --force --shallow --recursive --input deps.repos src
 if [[ -f "unnecessary_ros2_pkgs.txt" ]]; then
     xargs -a unnecessary_ros2_pkgs.txt -I {} rm -rf src/{}
 fi
@@ -15,3 +16,11 @@ rosdep install \
     --from-paths src \
     --ignore-src \
     -s | awk '{print $5}' | sed -E '/^\s*$/d' | sort -n > rosdep.txt
+
+sed -i \
+    -e '/^cmake$/d' \
+    -e '/^pkg-config$/d' \
+    -e '/^clang-tidy$/d' \
+    -e '/^doxygen$/d' \
+    -e '/^git$/d' \
+    rosdep.txt
