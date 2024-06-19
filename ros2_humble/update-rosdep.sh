@@ -2,8 +2,12 @@
 
 set -e
 
+rm -rf src
 mkdir -p src
-vcs import --input https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos src
+vcs import --force --shallow --recursive --input https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos src
+if [[ -f "unnecessary_ros2_pkgs.txt" ]]; then
+    xargs -a unnecessary_ros2_pkgs.txt -I {} rm -rf src/{}
+fi
 
 sudo rosdep init || :
 rosdep update
@@ -13,10 +17,10 @@ rosdep install \
     --from-paths src \
     --ignore-src \
     --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers" \
-    -s \
-    | awk '{print $5}' | sed -E '/^\s*$/d' | sort -n > rosdep.txt
+    -s | awk '{print $5}' | sed -E '/^\s*$/d' | sort -n > rosdep.txt
 
-sed -e '/^clang-format$/d' \
+sed -i \
+    -e '/^clang-format$/d' \
     -e '/^clang-tidy$/d' \
     -e '/^cmake$/d' \
     -e '/^curl$/d' \
@@ -24,4 +28,4 @@ sed -e '/^clang-format$/d' \
     -e '/^git$/d' \
     -e '/^openssl$/d' \
     -e '/^pkg-config$/d' \
-    -i rosdep.txt
+    rosdep.txt
