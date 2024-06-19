@@ -17,6 +17,8 @@ cp -v ../src/turtlebot4_setup/etc/chrony/chrony.conf /etc/chrony/
 mkdir -p /etc/netplan
 cp -v ../src/turtlebot4_setup/etc/netplan/40-ethernets.yaml /etc/netplan/
 cp -v ../src/turtlebot4_setup/etc/netplan/50-wifis.yaml /etc/netplan/
+chown kzl:kzl /etc/netplan/40-ethernets.yaml /etc/netplan/50-wifis.yaml
+chmod 600 /etc/netplan/40-ethernets.yaml /etc/netplan/50-wifis.yaml
 
 mkdir -p /etc/turtlebot4
 cp -v ../src/turtlebot4_setup/etc/turtlebot4/cyclonedds_rpi.xml /etc/turtlebot4/
