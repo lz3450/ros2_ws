@@ -10,12 +10,12 @@ COMMON_OPTIONS=(
 )
 
 if [[ -d "/opt/llvm-project" ]]; then
-    COMMON_OPTIONS+=(
-        --cmake-args
-        "-DCMAKE_VERBOSE_MAKEFILE=ON"
-        "-DCMAKE_C_COMPILER=/opt/llvm-project/bin/clang"
-        "-DCMAKE_CXX_COMPILER=/opt/llvm-project/bin/clang++"
-    )
+    # COMMON_OPTIONS+=(
+    #     --cmake-args
+    #     "-DCMAKE_VERBOSE_MAKEFILE=ON"
+    #     "-DCMAKE_C_COMPILER=/opt/llvm-project/bin/clang"
+    #     "-DCMAKE_CXX_COMPILER=/opt/llvm-project/bin/clang++"
+    # )
     export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 fi
 
