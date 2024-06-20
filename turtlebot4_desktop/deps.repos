@@ -23,6 +23,10 @@ repositories:
       type: git
       url: https://github.com/ros-visualization/rqt_robot_monitor.git
       version: humble
+  teleop_twist_keyboard:
+    type: git
+    url: https://github.com/ros2/teleop_twist_keyboard.git
+    version: dashing
   ### Simulation
   # turtlebot4_simulator:
   #   type: git
@@ -112,10 +116,6 @@ repositories:
   #   type: git
   #   url: https://github.com/pal-robotics/backward_ros.git
   #   version: foxy-devel
-  # teleop_twist_keyboard:
-  #   type: git
-  #   url: https://github.com/ros2/teleop_twist_keyboard.git
-  #   version: dashing
   # gazebo_ros2_control:
   #   type: git
   #   url: https://github.com/ros-simulation/gazebo_ros2_control.git
