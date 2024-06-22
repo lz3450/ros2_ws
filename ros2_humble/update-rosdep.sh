@@ -9,14 +9,11 @@ if [[ -f "unnecessary_ros2_pkgs.txt" ]]; then
     xargs -a unnecessary_ros2_pkgs.txt -I {} rm -rf src/{}
 fi
 
-sudo rosdep init || :
-rosdep update
-
 rosdep install \
     --reinstall \
     --from-paths src \
     --ignore-src \
-    --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers" \
+    --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers ignition-math6 ignition-cmake2" \
     -s | awk '{print $5}' | sed -E '/^\s*$/d' | sort -n > rosdep.txt
 
 sed -i \
