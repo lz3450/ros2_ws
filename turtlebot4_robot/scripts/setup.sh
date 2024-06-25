@@ -7,10 +7,10 @@ if [ $EUID -ne 0 ]; then
     exit 1
 fi
 
-apt-get update
-apt-get upgrade -y
-apt-get install -y chrony
+# apt-get update
+# apt-get upgrade -y
 
+# apt-get install -y chrony
 mkdir -p /etc/chrony
 cp -v ../src/turtlebot4_setup/etc/chrony/chrony.conf /etc/chrony/
 
