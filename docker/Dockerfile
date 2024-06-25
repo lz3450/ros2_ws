@@ -2,7 +2,7 @@ FROM ubuntu:jammy
 
 # Install required packages
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential git zsh openssh-server sudo curl && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential nano git zsh openssh-server sudo curl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
