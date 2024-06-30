@@ -25,4 +25,5 @@ sed -i \
     -e '/^git$/d' \
     -e '/^openssl$/d' \
     -e '/^pkg-config$/d' \
+    -e "s/'$//g" \
     rosdep.txt
