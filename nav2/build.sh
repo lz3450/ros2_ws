@@ -9,6 +9,8 @@ COMMON_OPTIONS=(
     --parallel-workers $(nproc)
     # --continue-on-error
     # --packages-skip-build-finished
+    --cmake-args
+    -Wno-dev
 )
 
 # if [[ -d "/opt/llvm-project" ]]; then
