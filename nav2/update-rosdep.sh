@@ -17,7 +17,7 @@ rosdep install \
     --reinstall \
     --from-paths src \
     --ignore-src \
-    -s | awk '{print $5}' | sed -E '/^\s*$/d' | sort -n > rosdep-$ubuntu_codename.txt
+    -s | awk '{print $5}' | sed -E '/^\s*$/d' | LC_ALL=C sort -n > rosdep-$ubuntu_codename.txt
 
 sed -i \
     -e '/^cmake$/d' \

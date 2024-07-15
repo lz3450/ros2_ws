@@ -115,9 +115,6 @@ libibverbs1
 libice-dev
 libicu-dev
 libigdgmm12
-libignition-cmake2-dev
-libignition-math6
-libignition-math6-dev
 libilmbase-dev
 libilmbase25
 libjbig-dev

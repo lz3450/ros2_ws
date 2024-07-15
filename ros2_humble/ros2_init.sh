@@ -17,7 +17,7 @@ sudo apt-get update
 sudo apt-get install -s \
     python3-pip \
     ros-dev-tools \
-    | grep "^Inst" | awk '{print $2}' | sort -n > ros2-init-installed-pkgs-$ubuntu_codename.txt
+    | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n > ros2-init-installed-pkgs-$ubuntu_codename.txt
 sudo apt-get install -y \
     python3-pip \
     ros-dev-tools

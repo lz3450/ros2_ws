@@ -19,5 +19,5 @@ if [[ ! -d "src" ]]; then
     fi
 fi
 
-grep -v 'ros-' rosdep-$ubuntu_codename.txt | xargs sudo apt-get install -s | grep "^Inst" | awk '{print $2}' | sort -n > rosdep-installed-pkgs-$ubuntu_codename.txt
+grep -v 'ros-' rosdep-$ubuntu_codename.txt | xargs sudo apt-get install -s | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n > rosdep-installed-pkgs-$ubuntu_codename.txt
 grep -v 'ros-' rosdep-$ubuntu_codename.txt | xargs sudo apt-get install -y
