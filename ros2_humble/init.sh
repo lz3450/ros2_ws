@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ubuntu_codename=$(. /etc/os-release && echo $UBUNTU_CODENAME)
+
 set -e
 
 if [[ ! -d "src" ]]; then
@@ -10,5 +12,5 @@ if [[ ! -d "src" ]]; then
     fi
 fi
 
-xargs -a rosdep.txt sudo apt-get install -s | grep "^Inst" | awk '{print $2}' | sort -n > rosdep-pkgs.txt
-xargs -a rosdep.txt sudo apt-get install -y
+xargs -a rosdep-$ubuntu_codename.txt sudo apt-get install -s | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n > rosdep-installed-pkgs-$ubuntu_codename.txt
+xargs -a rosdep-$ubuntu_codename.txt sudo apt-get install -y

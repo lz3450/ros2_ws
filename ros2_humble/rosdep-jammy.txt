@@ -17,8 +17,6 @@ libfreetype6-dev
 libgl1-mesa-dev
 libglu1-mesa-dev
 libgtest-dev
-libignition-cmake2-dev
-libignition-math6-dev
 libncurses-dev
 libopencv-dev
 liborocos-kdl-dev

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ubuntu_codename=$(. /etc/os-release && echo $UBUNTU_CODENAME)
+
 set -e
 
 rm -rf src
@@ -15,7 +17,7 @@ rosdep install \
     --reinstall \
     --from-paths src \
     --ignore-src \
-    -s | awk '{print $5}' | sed -E '/^\s*$/d' | sort -n > rosdep.txt
+    -s | awk '{print $5}' | sed -E '/^\s*$/d' | LC_ALL=C sort -n > rosdep-$ubuntu_codename.txt
 
 sed -i \
     -e '/^cmake$/d' \
@@ -23,4 +25,4 @@ sed -i \
     -e '/^clang-tidy$/d' \
     -e '/^doxygen$/d' \
     -e '/^git$/d' \
-    rosdep.txt
+    rosdep-$ubuntu_codename.txt

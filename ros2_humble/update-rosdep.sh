@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ubuntu_codename=$(. /etc/os-release && echo $UBUNTU_CODENAME)
+
 set -e
 
 rm -rf src
@@ -14,7 +16,7 @@ rosdep install \
     --from-paths src \
     --ignore-src \
     --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers ignition-math6 ignition-cmake2" \
-    -s | awk '{print $5}' | sed -E '/^\s*$/d' | sort -n > rosdep.txt
+    -s | awk '{print $5}' | sed -E '/^\s*$/d' | LC_ALL=C sort -n > rosdep-$ubuntu_codename.txt
 
 sed -i \
     -e '/^clang-format$/d' \
@@ -25,4 +27,5 @@ sed -i \
     -e '/^git$/d' \
     -e '/^openssl$/d' \
     -e '/^pkg-config$/d' \
-    rosdep.txt
+    -e "s/'$//g" \
+    rosdep-$ubuntu_codename.txt

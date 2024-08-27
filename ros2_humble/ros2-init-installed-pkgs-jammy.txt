@@ -1,8 +1,5 @@
 brz
 bzr
-cmake
-cmake-data
-dh-elpa-helper
 docutils-common
 javascript-common
 libapr1
@@ -83,7 +80,6 @@ python3-keyring
 python3-launchpadlib
 python3-lazr.restfulclient
 python3-lazr.uri
-python3-lib2to3
 python3-nose2
 python3-notify2
 python3-oauthlib

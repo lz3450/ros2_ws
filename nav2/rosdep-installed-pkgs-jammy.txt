@@ -185,6 +185,7 @@ libx265-dev
 libxml2-dev
 libxtensor-dev
 libzmq3-dev
+lm-sensors
 m4
 mpi-default-bin
 mpi-default-dev
