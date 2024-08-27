@@ -40,8 +40,8 @@ if [[ -f "$TURTLEBOT4_ROBOT_WS/install/local_setup.$shell" ]]; then
     fi
 fi
 
-AT_WS="$ROS2_WS/../AutoTrace/at_ws/install/local_setup.$shell"
-if [[ -f "$AT_WS" ]]; then
-    echo "at_ws ($shell)"
-    source "$AT_WS"
+ROBOTRACE_WS="$ROS2_WS/../RoboTrace/robotrace_ws/install/local_setup.$shell"
+if [[ -f "$ROBOTRACE_WS" ]]; then
+    echo "robotrace_ws ($shell)"
+    source "$ROBOTRACE_WS"
 fi
