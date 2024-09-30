@@ -34,7 +34,7 @@ if [[ -f "$TURTLEBOT4_ROBOT_WS_SETUP/install/local_setup.$shell" ]]; then
     . "$TURTLEBOT4_ROBOT_WS_SETUP/install/local_setup.$shell"
 
     ROBOT_SETUP="/etc/turtlebot4/setup.bash"
-    if [ -f "$ROBOT_SETUP" ]; then
+    if [[ -f "$ROBOT_SETUP" ]]; then
         echo "turtlebot4_setup ($shell)"
         export ROBOT_SETUP
     fi
