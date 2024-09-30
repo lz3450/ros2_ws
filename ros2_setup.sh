@@ -13,35 +13,29 @@ ROS2_SETUP="$ROS2_WS/ros2_humble/install/local_setup.$shell"
 if [[ -f "$ROS2_SETUP" ]]; then
     # export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
     echo "ros2_humble ($shell)"
-    source "$ROS2_SETUP"
+    . "$ROS2_SETUP"
 fi
 
-NAV2_WS="$ROS2_WS/nav2"
-if [[ -f "$NAV2_WS/install/local_setup.$shell" ]]; then
+NAV2_WS_SETUP="$ROS2_WS/nav2"
+if [[ -f "$NAV2_WS_SETUP/install/local_setup.$shell" ]]; then
     echo "nav2 ($shell)"
-    source "$NAV2_WS/install/local_setup.$shell"
+    . "$NAV2_WS_SETUP/install/local_setup.$shell"
 fi
 
-TURTLEBOT4_DESKTOP_WS="$ROS2_WS/turtlebot4_desktop"
-if [[ -f "$TURTLEBOT4_DESKTOP_WS/install/local_setup.$shell" ]]; then
+TURTLEBOT4_DESKTOP_WS_SETUP="$ROS2_WS/turtlebot4_desktop"
+if [[ -f "$TURTLEBOT4_DESKTOP_WS_SETUP/install/local_setup.$shell" ]]; then
     echo "turtlebot4_desktop ($shell)"
-    source "$TURTLEBOT4_DESKTOP_WS/install/local_setup.$shell"
+    . "$TURTLEBOT4_DESKTOP_WS_SETUP/install/local_setup.$shell"
 fi
 
-TURTLEBOT4_ROBOT_WS="$ROS2_WS/turtlebot4_robot"
-if [[ -f "$TURTLEBOT4_ROBOT_WS/install/local_setup.$shell" ]]; then
+TURTLEBOT4_ROBOT_WS_SETUP="$ROS2_WS/turtlebot4_robot"
+if [[ -f "$TURTLEBOT4_ROBOT_WS_SETUP/install/local_setup.$shell" ]]; then
     echo "turtlebot4_robot ($shell)"
-    source "$TURTLEBOT4_ROBOT_WS/install/local_setup.$shell"
+    . "$TURTLEBOT4_ROBOT_WS_SETUP/install/local_setup.$shell"
 
     ROBOT_SETUP="/etc/turtlebot4/setup.bash"
     if [ -f "$ROBOT_SETUP" ]; then
         echo "turtlebot4_setup ($shell)"
         export ROBOT_SETUP
     fi
-fi
-
-ROBOTRACE_WS="$ROS2_WS/../RoboTrace/robotrace_ws/install/local_setup.$shell"
-if [[ -f "$ROBOTRACE_WS" ]]; then
-    echo "robotrace_ws ($shell)"
-    source "$ROBOTRACE_WS"
 fi
