@@ -1,0 +1,29 @@
+{
+    "version": "0.2",
+    "ignorePaths": [],
+    "dictionaryDefinitions": [],
+    "dictionaries": [],
+    "words": [
+        "bringup",
+        "Clearpath",
+        "costmap",
+        "irobot",
+        "Kreinin",
+        "linebuf",
+        "rankdir",
+        "rclcpp",
+        "RCUTILS",
+        "remappings",
+        "respawn",
+        "Robo",
+        "Roni",
+        "rosout",
+        "Rviz",
+        "substs",
+        "teleop",
+        "undock",
+        "undocked"
+    ],
+    "ignoreWords": [],
+    "import": []
+}
