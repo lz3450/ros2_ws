@@ -2,7 +2,14 @@ import subprocess
 import re
 
 EXCLUDE = {
-    "nodes": [r"/_.+", r"/launch_ros_.+", r"/turtlebot4_diagnostics", r"/transform_listener_impl_.+", r"/analyzers"],
+    "nodes": [
+        r"/_.+",
+        r"/launch_ros_.+",
+        r"/turtlebot4_diagnostics",
+        r"/transform_listener_impl_.+",
+        r"/analyzers",
+        # r"/lifecycle_manager_navigation",
+    ],
     "topics": [r"/diagnostics.*", r"/parameter_events", r"/rosout", r"/tf", r"/bond"],
     "services": [
         r"/.+/describe_parameters",
