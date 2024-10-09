@@ -1,6 +1,8 @@
-*/src
-*/build
-*/build-merge
-*/install
-*/install-merge
-*/log
+/*/src
+/*/build
+/*/build-merge
+/*/install
+/*/install-merge
+/*/log
+
+/utils/*.dot
