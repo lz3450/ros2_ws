@@ -27,5 +27,6 @@ sed -i \
     -e '/^git$/d' \
     -e '/^openssl$/d' \
     -e '/^pkg-config$/d' \
+    -e '/^doxygen$/d' \
     -e "s/'$//g" \
     rosdep-$ubuntu_codename.txt
