@@ -1,11 +1,5 @@
 acl
-clang-format
-clang-tidy
-cmake
 cppcheck
-curl
-file
-git
 google-mock
 graphviz
 libacl1-dev
@@ -50,8 +44,6 @@ libyaml-cpp-dev
 libyaml-dev
 libzstd-dev
 lttng-tools
-openssl
-pkg-config
 pybind11-dev
 pydocstyle
 pyflakes3

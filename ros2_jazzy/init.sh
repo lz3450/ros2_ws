@@ -13,6 +13,8 @@ umask 0022
 
 ROS_DISTRO=jazzy
 
+declare -i dry_run=0
+
 default_ros2_build_env_setup() {
     ### ROS2 building environment setup
     # https://docs.ros.org/en/jazzy/Installation/Alternatives/Ubuntu-Development-Setup.html
@@ -22,7 +24,9 @@ default_ros2_build_env_setup() {
     sudo apt-get update
     sudo apt-get install -s ros-dev-tools | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n \
         > "ros2-$ROS_DISTRO-init-pkgs-$UBUNTU_CODENAME.txt"
-    sudo apt-get install -y ros-dev-tools
+    if (( $dry_run == 0 )); then
+        sudo apt-get install -y ros-dev-tools
+    fi
 }
 customized_ros2_build_env_setup() {
     ### ROS2 building environment setup (customized)
@@ -78,11 +82,27 @@ default_ros2_dep_install() {
         --ignore-src \
         --skip-keys="fastcdr rti-connext-dds-6.0.1 urdfdom_headers" \
         -s | awk '{print $5}' | sed -E -e '/^\s*$/d' -e "/'$/s/'//" | LC_ALL=C sort -n > rosdep-$ROS_DISTRO-$UBUNTU_CODENAME.txt
+
+    sed -i \
+        -e '/^clang-format$/d' \
+        -e '/^clang-tidy$/d' \
+        -e '/^cmake$/d' \
+        -e '/^curl$/d' \
+        -e '/^file$/d' \
+        -e '/^git$/d' \
+        -e '/^openssl$/d' \
+        -e '/^pkg-config$/d' \
+        -e '/^doxygen$/d' \
+        -e "s/'$//g" \
+        rosdep-$ROS_DISTRO-$UBUNTU_CODENAME.txt
+
     if [[ -f "ros2_unnecessary_pkgs.txt" ]]; then
         xargs -a ros2_unnecessary_pkgs.txt -I {} rm -rf src/{}
     fi
     xargs -a rosdep-$ROS_DISTRO-$UBUNTU_CODENAME.txt sudo apt-get install -s | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n > rosdep-$ROS_DISTRO-pkgs-to-install-$UBUNTU_CODENAME.txt
-    xargs -a rosdep-$ROS_DISTRO-$UBUNTU_CODENAME.txt sudo apt-get install -y
+    if (( $dry_run == 0 )); then
+        xargs -a rosdep-$ROS_DISTRO-$UBUNTU_CODENAME.txt sudo apt-get install -y
+    fi
 }
 customized_ros2_dep_install() {
     ### ROS2 dependencies installation (customized)
