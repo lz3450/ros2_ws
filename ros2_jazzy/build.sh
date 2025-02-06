@@ -3,6 +3,7 @@
 set -e
 
 export MAKEFLAGS="-j $(nproc)"
+export CMAKE_PREFIX_PATH="/usr:$CMAKE_PREFIX_PATH"
 
 COMMON_OPTIONS=(
     --symlink-install

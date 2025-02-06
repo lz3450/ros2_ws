@@ -12,6 +12,9 @@ umask 0022
 . /etc/os-release
 
 ROS_DISTRO=jazzy
+ROS2_INIT_PKGS_FILE="ros2-$ROS_DISTRO-init-pkgs-$UBUNTU_CODENAME.txt"
+ROSDEP_PKGS_FILE="rosdep-$ROS_DISTRO-$UBUNTU_CODENAME.txt"
+ROSDEP_PKGS_TO_INSTALL_FILE="rosdep-$ROS_DISTRO-pkgs-to-install-$UBUNTU_CODENAME.txt"
 
 declare -i dry_run=0
 
@@ -22,11 +25,13 @@ default_ros2_build_env_setup() {
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
     sudo apt-get update
-    sudo apt-get install -s \
-        python3-pip \
-        ros-dev-tools \
+    if [[ ! -f "$ROS2_INIT_PKGS_FILE" ]]; then
+        sudo apt-get install -s \
+            python3-pip \
+            ros-dev-tools \
             | grep "^Inst" || : | awk '{print $2}' | LC_ALL=C sort -n \
-        > "ros2-$ROS_DISTRO-init-pkgs-$UBUNTU_CODENAME.txt"
+            > "$ROS2_INIT_PKGS_FILE"
+    fi
     if (( $dry_run == 0 )); then
         sudo apt-get install -y \
             python3-pip \
@@ -86,7 +91,7 @@ default_ros2_dep_install() {
         --from-paths src \
         --ignore-src \
         --skip-keys="fastcdr rti-connext-dds-6.0.1 urdfdom_headers" \
-        -s | awk '{print $5}' | sed -E -e '/^\s*$/d' -e "/'$/s/'//" | LC_ALL=C sort -n > rosdep-$ROS_DISTRO-$UBUNTU_CODENAME.txt
+        -s | awk '{print $5}' | sed -E -e '/^\s*$/d' -e "/'$/s/'//" | LC_ALL=C sort -n > "$ROSDEP_PKGS_FILE"
 
     sed -i \
         -e '/^clang-format$/d' \
@@ -99,14 +104,18 @@ default_ros2_dep_install() {
         -e '/^pkg-config$/d' \
         -e '/^doxygen$/d' \
         -e "s/'$//g" \
-        rosdep-$ROS_DISTRO-$UBUNTU_CODENAME.txt
+        "$ROSDEP_PKGS_FILE"
 
     if [[ -f "ros2_unnecessary_pkgs.txt" ]]; then
         xargs -a ros2_unnecessary_pkgs.txt -I {} rm -rf src/{}
     fi
-    xargs -a rosdep-$ROS_DISTRO-$UBUNTU_CODENAME.txt sudo apt-get install -s | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n > rosdep-$ROS_DISTRO-pkgs-to-install-$UBUNTU_CODENAME.txt
+    if [[ ! -f "$ROSDEP_PKGS_TO_INSTALL_FILE" ]]; then
+        xargs -a "$ROSDEP_PKGS_FILE" sudo apt-get install -s \
+            | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n \
+            > "$ROSDEP_PKGS_TO_INSTALL_FILE"
+    fi
     if (( $dry_run == 0 )); then
-        xargs -a rosdep-$ROS_DISTRO-$UBUNTU_CODENAME.txt sudo apt-get install -y
+        xargs -a "$ROSDEP_PKGS_TO_INSTALL_FILE" sudo apt-get install -y
     fi
 }
 customized_ros2_dep_install() {
