@@ -23,7 +23,7 @@ libcap-dev
 libclang-dev
 libconsole-bridge-dev
 libcwiid-dev
-libcwiid1t64'
+libcwiid1t64
 libdw-dev
 libeigen3-dev
 libfcl-dev

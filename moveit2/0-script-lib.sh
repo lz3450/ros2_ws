@@ -32,12 +32,13 @@ update_moveit2_dep_pkgs() {
         -e '/^doxygen$/d' \
         -e '/^git$/d' \
         -e '/^pkg-config$/d' \
+        -e "s/'$//g" \
         "$MOVEIT2_DEP_PKGS_FILE"
 }
 
 install_moveit2_dep_pkgs() {
-    grep -v 'ros-' rosdep-$UBUNTU_CODENAME.txt | xargs sudo apt-get install -s \
+    grep -v 'ros-' "$MOVEIT2_DEP_PKGS_FILE" | xargs sudo apt-get install -s \
         | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n \
         > "$MOVEIT2_DEP_PKGS_TO_INSTALL_FILE"
-    grep -v 'ros-' rosdep-$UBUNTU_CODENAME.txt | xargs sudo apt-get install -y
+    grep -v 'ros-' "$MOVEIT2_DEP_PKGS_FILE" | xargs sudo apt-get install -y
 }
