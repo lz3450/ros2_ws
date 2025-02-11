@@ -1,44 +1,37 @@
-#!/bin/bash
-
-set -e
-set -u
-set -o pipefail
-# set -x
-
-umask 0022
-
-################################################################################
+#!/usr/bin/bash
 
 . /etc/os-release
 
 ROS_DISTRO=jazzy
-ROS2_INIT_PKGS_FILE="ros2-$ROS_DISTRO-init-pkgs-$UBUNTU_CODENAME.txt"
-ROSDEP_PKGS_FILE="rosdep-$ROS_DISTRO-$UBUNTU_CODENAME.txt"
-ROSDEP_PKGS_TO_INSTALL_FILE="rosdep-$ROS_DISTRO-pkgs-to-install-$UBUNTU_CODENAME.txt"
+ROS2_ENV_SETUP_PKGS_FILE="ros2-env-setup-pkgs-$UBUNTU_CODENAME.txt"
+ROS2_DEP_PKGS_FILE="ros2-dep-pkgs-$UBUNTU_CODENAME.txt"
+ROS2_DEP_PKGS_TO_INSTALL_FILE="ros2-dep-pkgs-to-install-$UBUNTU_CODENAME.txt"
 
-declare -i dry_run=0
-
-default_ros2_build_env_setup() {
+ros2_repo_setup() {
     ### ROS2 building environment setup
     # https://docs.ros.org/en/jazzy/Installation/Alternatives/Ubuntu-Development-Setup.html
     sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
-
-    sudo apt-get update
-    if [[ ! -f "$ROS2_INIT_PKGS_FILE" ]]; then
-        sudo apt-get install -s \
-            python3-pip \
-            ros-dev-tools \
-            | grep "^Inst" || : | awk '{print $2}' | LC_ALL=C sort -n \
-            > "$ROS2_INIT_PKGS_FILE"
-    fi
-    if (( $dry_run == 0 )); then
-        sudo apt-get install -y \
-            python3-pip \
-            ros-dev-tools
-    fi
 }
-customized_ros2_build_env_setup() {
+
+update_ros2_env_setup_pkgs() {
+    sudo apt-get update
+    sudo apt-get install -s \
+        python3-pip \
+        ros-dev-tools \
+        | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n \
+        > "$ROS2_ENV_SETUP_PKGS_FILE"
+}
+
+install_ros2_env_setup_pkgs() {
+    sudo apt-get update
+    sudo apt-get install -y \
+        python3-pip \
+        ros-dev-tools
+}
+
+
+install_env_setup_pkgs_custom() {
     ### ROS2 building environment setup (customized)
     local -a _pip_pkgs=(
         colcon-argcomplete
@@ -77,12 +70,17 @@ customized_ros2_build_env_setup() {
 }
 
 get_ros2_src() {
+    if [[ -d "src" ]]; then
+        return
+    fi
     mkdir -p src
     vcs import --force --shallow --recursive --input "https://raw.githubusercontent.com/ros2/ros2/$ROS_DISTRO/ros2.repos" src
+    if [[ -f "ros2_unnecessary_pkgs.txt" ]]; then
+        xargs -a ros2_unnecessary_pkgs.txt -I {} rm -rf src/{}
+    fi
 }
 
-default_ros2_dep_install() {
-    ### ROS2 dependencies installation
+update_ros2_dep_pkgs() {
     sudo -E rosdep init || :
     rosdep update --rosdistro=$ROS_DISTRO
     rosdep install \
@@ -91,7 +89,7 @@ default_ros2_dep_install() {
         --from-paths src \
         --ignore-src \
         --skip-keys="fastcdr rti-connext-dds-6.0.1 urdfdom_headers" \
-        -s | awk '{print $5}' | sed -E -e '/^\s*$/d' -e "/'$/s/'//" | LC_ALL=C sort -n > "$ROSDEP_PKGS_FILE"
+        -s | awk '{print $5}' | sed -E -e '/^\s*$/d' -e "/'$/s/'//" | LC_ALL=C sort -n > "$ROS2_DEP_PKGS_FILE"
 
     sed -i \
         -e '/^clang-format$/d' \
@@ -104,21 +102,17 @@ default_ros2_dep_install() {
         -e '/^pkg-config$/d' \
         -e '/^doxygen$/d' \
         -e "s/'$//g" \
-        "$ROSDEP_PKGS_FILE"
-
-    if [[ -f "ros2_unnecessary_pkgs.txt" ]]; then
-        xargs -a ros2_unnecessary_pkgs.txt -I {} rm -rf src/{}
-    fi
-    if [[ ! -f "$ROSDEP_PKGS_TO_INSTALL_FILE" ]]; then
-        xargs -a "$ROSDEP_PKGS_FILE" sudo apt-get install -s \
-            | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n \
-            > "$ROSDEP_PKGS_TO_INSTALL_FILE"
-    fi
-    if (( $dry_run == 0 )); then
-        xargs -a "$ROSDEP_PKGS_TO_INSTALL_FILE" sudo apt-get install -y
-    fi
+        "$ROS2_DEP_PKGS_FILE"
 }
-customized_ros2_dep_install() {
+
+install_ros2_dep_pkgs() {
+    xargs -a "$ROS2_DEP_PKGS_FILE" sudo apt-get install -s \
+        | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n \
+        > "$ROS2_DEP_PKGS_TO_INSTALL_FILE"
+    xargs -a "$ROS2_DEP_PKGS_TO_INSTALL_FILE" sudo apt-get install -y
+}
+
+install_ros2_dep_pkgs_custom() {
     ### ROS2 dependencies installation (customized)
     local -a _deb_pkgs=(
         cmake
@@ -142,9 +136,3 @@ customized_ros2_dep_install() {
     python3 -m pip wheel --wheel-dir ~/wheels --no-binary :all: "${_pip_pkgs[@]}"
     python3 -m pip install --user -U --no-index --find-links ~/wheels "${_pip_pkgs[@]}"
 }
-
-################################################################################
-
-default_ros2_build_env_setup
-get_ros2_src
-default_ros2_dep_install

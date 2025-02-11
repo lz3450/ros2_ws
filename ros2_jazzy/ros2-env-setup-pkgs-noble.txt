@@ -30,6 +30,7 @@ libcups2t64
 libdatrie1
 libdconf1
 libepoxy0
+libexpat1-dev
 libfribidi0
 libgdk-pixbuf-2.0-0
 libgdk-pixbuf2.0-bin
@@ -47,6 +48,8 @@ libjs-jquery-isonscreen
 libjs-jquery-metadata
 libjs-jquery-tablesorter
 libjs-jquery-throttle-debounce
+libjs-sphinxdoc
+libjs-underscore
 libjsoncpp25
 liblcms2-2
 libopenjp2-7
@@ -56,6 +59,8 @@ libpangoft2-1.0-0
 libpaper-utils
 libpaper1
 libpixman-1-0
+libpython3-dev
+libpython3.12-dev
 libpython3.12t64
 libraqm0
 librhash0
@@ -125,6 +130,7 @@ python3-configobj
 python3-coverage
 python3-dateutil
 python3-deprecated
+python3-dev
 python3-distlib
 python3-docutils
 python3-dulwich
@@ -142,6 +148,7 @@ python3-olefile
 python3-packaging
 python3-patiencediff
 python3-pil
+python3-pip
 python3-pluggy
 python3-pygments
 python3-pytest
@@ -159,8 +166,10 @@ python3-tzlocal
 python3-urllib3
 python3-vcstool
 python3-vcstools
+python3-wheel
 python3-wrapt
 python3-yaml
+python3.12-dev
 ros-build-essential
 ros-dev-tools
 session-migration
@@ -170,3 +179,4 @@ ubuntu-mono
 x11-common
 xkb-data
 xml-core
+zlib1g-dev
