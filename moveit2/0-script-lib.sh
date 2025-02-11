@@ -1,46 +1,43 @@
 #!/usr/bin/bash
 
-set -e
-set -o pipefail
-# set -u
-# set -x
-
-umask 0022
-
-################################################################################
-
 . /etc/os-release
 . ../ros2_setup.sh
 
-build_env_setup() {
-    if [[ ! -d "moveit2" ]]; then
-        git clone https://github.com/moveit/moveit2.git -b $ROS_DISTRO
-    fi
+MOVEIT2_DEP_PKGS_FILE="moveit2-dep-pkgs-$UBUNTU_CODENAME.txt"
+MOVEIT2_DEP_PKGS_TO_INSTALL_FILE="moveit2-dep-pkgs-to-install-$UBUNTU_CODENAME.txt"
 
+get_moveit2_src() {
     if [[ ! -d "src" ]]; then
         mkdir -p src
-        vcs import --force --shallow --recursive --input moveit2/moveit2.repos src
+        git clone -b $ROS_DISTRO --depth 1 https://github.com/moveit/moveit2.git src/moveit2
+        vcs import --force --shallow --recursive --input src/moveit2/moveit2.repos src
+        vcs import --force --shallow --recursive --input deps.repos src
         if [[ -f "unnecessary_ros2_pkgs.txt" ]]; then
             xargs -a unnecessary_ros2_pkgs.txt -I {} rm -rf src/{}
         fi
     fi
 }
 
-install_deps() {
-    grep -v 'ros-' rosdep-$UBUNTU_CODENAME.txt | xargs sudo apt-get install -s | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n > rosdep-installed-pkgs-$UBUNTU_CODENAME.txt
-    grep -v 'ros-' rosdep-$UBUNTU_CODENAME.txt | xargs sudo apt-get install -y
-}
-
-update_rosdep() {
+update_moveit2_dep_pkgs() {
     rosdep install \
         --rosdistro=$ROS_DISTRO \
         --reinstall \
         --from-paths src \
         --ignore-src \
-        -s | awk '{print $5}' | sed -E '/^\s*$/d' | LC_ALL=C sort -n > rosdep-$UBUNTU_CODENAME.txt
+        -s | awk '{print $5}' | sed -E '/^\s*$/d' | LC_ALL=C sort -n > "$MOVEIT2_DEP_PKGS_FILE"
 
     sed -i \
+        -e '/^clang.*$/d' \
         -e '/^cmake$/d' \
+        -e '/^doxygen$/d' \
+        -e '/^git$/d' \
         -e '/^pkg-config$/d' \
-        rosdep-$UBUNTU_CODENAME.txt
+        "$MOVEIT2_DEP_PKGS_FILE"
+}
+
+install_moveit2_dep_pkgs() {
+    grep -v 'ros-' rosdep-$UBUNTU_CODENAME.txt | xargs sudo apt-get install -s \
+        | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n \
+        > "$MOVEIT2_DEP_PKGS_TO_INSTALL_FILE"
+    grep -v 'ros-' rosdep-$UBUNTU_CODENAME.txt | xargs sudo apt-get install -y
 }

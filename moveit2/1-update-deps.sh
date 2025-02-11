@@ -12,7 +12,6 @@ umask 0022
 . ./0-script-lib.sh
 
 rm -rf src
-mkdir -p src
 
-build_env_setup
-update_rosdep
+get_moveit2_src
+update_moveit2_dep_pkgs

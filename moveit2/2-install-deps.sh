@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 set -e
 set -o pipefail
@@ -11,5 +11,5 @@ umask 0022
 
 . ./0-script-lib.sh
 
-build_env_setup
-install_deps
+get_moveit2_src
+install_moveit2_dep_pkgs
