@@ -3,7 +3,6 @@ freeglut3-dev
 iwyu
 lcov
 libassimp-dev
-libbenchmark-dev
 libbluetooth-dev
 libbluetooth3
 libboost-all-dev
@@ -66,5 +65,8 @@ python3-setuptools
 python3-typeguard
 python3-yaml
 qtbase5-dev
+ros-jazzy-google-benchmark-vendor
+ros-jazzy-urdfdom
+ros-jazzy-urdfdom-headers
 ruby
 spacenavd

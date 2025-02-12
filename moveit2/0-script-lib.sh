@@ -24,7 +24,7 @@ update_moveit2_dep_pkgs() {
         --reinstall \
         --from-paths src \
         --ignore-src \
-        -s | awk '{print $5}' | sed -E '/^\s*$/d' | LC_ALL=C sort -n > "$MOVEIT2_DEP_PKGS_FILE"
+        -s | awk '{print $5}' | sed -E -e '/^\s*$/d' -e "s/'$//g" | LC_ALL=C sort -n > "$MOVEIT2_DEP_PKGS_FILE"
 
     sed -i \
         -e '/^clang.*$/d' \
@@ -32,7 +32,6 @@ update_moveit2_dep_pkgs() {
         -e '/^doxygen$/d' \
         -e '/^git$/d' \
         -e '/^pkg-config$/d' \
-        -e "s/'$//g" \
         "$MOVEIT2_DEP_PKGS_FILE"
 }
 

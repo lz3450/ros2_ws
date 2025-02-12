@@ -43,10 +43,6 @@ repositories:
     type: git
     url: https://github.com/ros-planning/random_numbers.git
     version: ros2
-  urdfdom:
-    type: git
-    url: https://github.com/ros/urdfdom.git
-    version: master
   xacro:
     type: git
     url: https://github.com/ros/xacro.git
@@ -55,10 +51,6 @@ repositories:
     type: git
     url: https://github.com/PickNikRobotics/generate_parameter_library.git
     version: main
-  google_benchmark_vendor:
-    type: git
-    url: https://github.com/ament/google_benchmark_vendor.git
-    version: jazzy
   ros2_controllers:
     type: git
     url: https://github.com/ros-controls/ros2_controllers.git
@@ -155,7 +147,3 @@ repositories:
         type: git
         url: https://github.com/gazebo-release/gz_tools_vendor.git
         version: jazzy
-  urdfdom_headers:
-        type: git
-        url: https://github.com/ros2-gbp/urdfdom_headers-release.git
-        version: release/jazzy/urdfdom_headers
