@@ -1,16 +1,33 @@
 {
     "version": "0.2",
-    "ignorePaths": [],
+    "ignorePaths": [
+        "*.txt"
+    ],
     "dictionaryDefinitions": [],
     "dictionaries": [],
     "words": [
+        "ackermann",
         "bringup",
         "Clearpath",
+        "colcon",
         "costmap",
+        "cppcheck",
+        "DBUILD",
+        "DCMAKE",
+        "devel",
         "DISTRO",
+        "DOMPL",
+        "eigen",
         "irobot",
+        "isystem",
+        "iwyu",
         "Kreinin",
+        "libboost",
         "linebuf",
+        "MAKEFLAGS",
+        "moveit",
+        "ompl",
+        "opencv",
         "rankdir",
         "rclcpp",
         "RCUTILS",
@@ -25,7 +42,9 @@
         "substs",
         "teleop",
         "undock",
-        "undocked"
+        "undocked",
+        "urdfdom",
+        "xacro"
     ],
     "ignoreWords": [],
     "import": []
