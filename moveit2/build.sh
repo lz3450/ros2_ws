@@ -1,19 +1,31 @@
 #!/usr/bin/bash
 
 set -e
+set -o pipefail
+# set -u
+# set -x
 
-. ../ros2_setup.sh
+umask 0022
 
-export MAKEFLAGS="-j $(nproc)"
-export CMAKE_PREFIX_PATH="/usr:$CMAKE_PREFIX_PATH"
+################################################################################
+
+. ./0-script-lib.sh
+
+if [[ ! -d "src" ]]; then
+    get_moveit2_src
+fi
 
 COMMON_OPTIONS=(
+    # --merge-install
     --symlink-install
     --parallel-workers $(nproc)
     # --continue-on-error
     # --packages-skip-build-finished
     --cmake-args
     -Wno-dev
+    "-DCMAKE_BUILD_TYPE=Release"
+    "-DOMPL_VERSIONED_INSTALL=OFF"
+    # "-DBUILD_TESTING=OFF"
 )
 
-colcon build "${COMMON_OPTIONS[@]}"
+MAKEFLAGS="-j $(nproc)" colcon build "${COMMON_OPTIONS[@]}"

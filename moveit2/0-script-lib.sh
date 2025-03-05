@@ -9,9 +9,8 @@ MOVEIT2_DEP_PKGS_TO_INSTALL_FILE="moveit2-dep-pkgs-to-install-$UBUNTU_CODENAME.t
 get_moveit2_src() {
     if [[ ! -d "src" ]]; then
         mkdir -p src
-        git clone -b $ROS_DISTRO --depth 1 https://github.com/moveit/moveit2.git src/moveit2
-        vcs import --force --shallow --recursive --input src/moveit2/moveit2.repos src
         vcs import --force --shallow --recursive --input deps.repos src
+        vcs import --force --shallow --recursive --input src/moveit2/moveit2.repos src
         if [[ -f "unnecessary_ros2_pkgs.txt" ]]; then
             xargs -a unnecessary_ros2_pkgs.txt -I {} rm -rf src/{}
         fi
@@ -27,7 +26,10 @@ update_moveit2_dep_pkgs() {
         -s | awk '{print $5}' | sed -E -e '/^\s*$/d' -e "s/'$//g" | LC_ALL=C sort -n > "$MOVEIT2_DEP_PKGS_FILE"
 
     sed -i \
-        -e '/^clang.*$/d' \
+        -e '/^.*clang.*$/d' \
+        -e '/^cppcheck$/d' \
+        -e '/^iwyu$/d' \
+        -e '/^libboost-/ {/libboost-all-dev/!d}' \
         -e '/^cmake$/d' \
         -e '/^doxygen$/d' \
         -e '/^git$/d' \
