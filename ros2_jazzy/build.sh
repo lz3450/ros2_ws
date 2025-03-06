@@ -10,6 +10,9 @@ COMMON_OPTIONS=(
     --parallel-workers $(nproc)
     # --continue-on-error
     # --packages-skip-build-finished
+    --cmake-args
+    -Wno-dev
+    "-DCMAKE_BUILD_TYPE=Release"
 )
 
 colcon build "${COMMON_OPTIONS[@]}"

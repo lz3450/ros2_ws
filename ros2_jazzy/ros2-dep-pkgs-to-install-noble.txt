@@ -3,7 +3,6 @@ babeltrace
 blt
 bzip2-doc
 catch2
-cppcheck
 fonts-liberation
 fonts-liberation-sans-narrow
 fonts-liberation2
@@ -335,6 +334,7 @@ libsqlite3-dev
 libsrt1.5-gnutls
 libssh-gcrypt-4
 libssl-dev
+libssl3t64
 libsuperlu6
 libsvtav1enc1d1
 libswresample-dev
@@ -411,6 +411,7 @@ libxerces-c3.2t64
 libxext-dev
 libxft2
 libxkbcommon-x11-0
+libxml2
 libxml2-utils
 libxmu-dev
 libxmu-headers
@@ -441,6 +442,7 @@ mesa-vulkan-drivers
 mysql-common
 ocl-icd-libopencl1
 opencv-data
+openssl
 pkg-config
 pkgconf
 pkgconf-bin

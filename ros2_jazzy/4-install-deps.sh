@@ -9,6 +9,7 @@ umask 0022
 
 ################################################################################
 
-. ./0-script-lib.sh
+ROS_DISTRO=humble
+. ../ros2/lib.sh
 
 install_ros2_dep_pkgs

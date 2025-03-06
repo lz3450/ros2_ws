@@ -9,7 +9,8 @@ umask 0022
 
 ################################################################################
 
-. ./0-script-lib.sh
+ROS_DISTRO=jazzy
+. ../ros2/lib.sh
 
-update_ros2_env_setup_pkgs
-install_ros2_env_setup_pkgs
+update_ros2_dev_tools_dep_pkgs
+install_ros2_dev_tools_dep_pkgs
