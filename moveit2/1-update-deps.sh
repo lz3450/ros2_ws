@@ -13,5 +13,6 @@ umask 0022
 
 rm -rf src
 
+init_mixin
 get_moveit2_src
 update_moveit2_dep_pkgs

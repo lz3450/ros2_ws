@@ -16,11 +16,10 @@ if [[ ! -d "src" ]]; then
 fi
 
 COMMON_OPTIONS=(
-    # --merge-install
-    --symlink-install
+    --mixin release
     --parallel-workers $(nproc)
     # --continue-on-error
-    # --packages-skip-build-finished
+    --packages-skip-build-finished
     --cmake-args
     -Wno-dev
     "-DCMAKE_BUILD_TYPE=Release"
