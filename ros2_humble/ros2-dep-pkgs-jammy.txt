@@ -1,5 +1,4 @@
 acl
-cppcheck
 google-mock
 graphviz
 libacl1-dev
@@ -16,6 +15,8 @@ libfreetype6-dev
 libgl1-mesa-dev
 libglu1-mesa-dev
 libgtest-dev
+libignition-cmake2-dev
+libignition-math6-dev
 libncurses-dev
 libopencv-dev
 liborocos-kdl-dev
@@ -30,8 +31,8 @@ libshiboken2-dev
 libspdlog-dev
 libsqlite3-dev
 libssl-dev
-libtinyxml2-dev
 libtinyxml-dev
+libtinyxml2-dev
 libx11-dev
 libxaw7-dev
 libxml2-utils
@@ -77,6 +78,7 @@ python3-pytest-cov
 python3-pytest-mock
 python3-pytest-timeout
 python3-rosdistro-modules
+python3-rospkg
 python3-setuptools
 python3-sip-dev
 python3-vcstool

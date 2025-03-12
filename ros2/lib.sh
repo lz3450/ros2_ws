@@ -43,11 +43,10 @@ get_ros2_src() {
         _repos="$1"
     fi
 
-    if [[ -d "src" ]]; then
-        return
+    if [[ ! -d "src" ]]; then
+        mkdir -p src
+        vcs import --force --shallow --recursive --input "$_repos" src
     fi
-    mkdir -p src
-    vcs import --force --shallow --recursive --input "$_repos" src
 }
 
 update_ros2_dep_pkgs() {
@@ -64,8 +63,7 @@ update_ros2_dep_pkgs() {
         -s | awk '{print $5}' | sed -E -e '/^\s*$/d' -e "/'$/s/'//" | LC_ALL=C sort -n > "$ROS2_DEP_PKGS_FILE"
 
     sed -i \
-        -e '/^clang-format$/d' \
-        -e '/^clang-tidy$/d' \
+        -e '/^.*clang.*$/d' \
         -e '/^cmake$/d' \
         -e '/^cppcheck$/d' \
         -e '/^curl$/d' \

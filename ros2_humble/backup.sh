@@ -9,4 +9,4 @@ umask 0022
 
 ################################################################################
 
-rm -rf build install log src
+tar --zstd -vcf ros2_humble_backup.tar.zst build install src log

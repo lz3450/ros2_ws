@@ -9,4 +9,4 @@ umask 0022
 
 ################################################################################
 
-rm -rf build install log src
+rm -rf build install log
