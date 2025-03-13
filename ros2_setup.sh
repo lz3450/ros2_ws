@@ -9,9 +9,10 @@ else
 fi
 echo "ros2_ws: $ROS2_WS"
 
-ROS2_SETUP="$ROS2_WS/ros2_jazzy/install/local_setup.$shell"
+ROS2_SETUP="$ROS2_WS/ros2_humble/install/local_setup.$shell"
 if [[ -f "$ROS2_SETUP" ]]; then
     # export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-    echo "ros2_jazzy ($shell)"
+    export ROS_PYTHON_VERSION=3
+    echo "ros2_humble ($shell)"
     . "$ROS2_SETUP"
 fi
