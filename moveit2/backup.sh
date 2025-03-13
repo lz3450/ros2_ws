@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 set -e
 set -o pipefail
@@ -9,8 +9,4 @@ umask 0022
 
 ################################################################################
 
-. ./0-script-lib.sh
-
-init_mixin
-get_moveit2_src
-update_moveit2_dep_pkgs
+tar --zstd -vcf ros2_humble_backup.tar.zst build install src log
