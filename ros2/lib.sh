@@ -80,7 +80,7 @@ install_ros2_dep_pkgs() {
     xargs -a "$ROS2_DEP_PKGS_FILE" sudo apt-get install -s \
         | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n \
         > "$ROS2_DEP_PKGS_TO_INSTALL_FILE"
-    xargs -a "$ROS2_DEP_PKGS_TO_INSTALL_FILE" sudo apt-get install -y
+    xargs -a "$ROS2_DEP_PKGS_FILE" sudo apt-get install -y
 }
 
 ################################################################################
