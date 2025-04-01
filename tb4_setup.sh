@@ -1,8 +1,8 @@
 if [ -n "$BASH_VERSION" ]; then
-    export ROS2_WS="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1; pwd -P)"
+    export ROS2_WS="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1; pwd -P)"
     shell="bash"
 elif [ -n "$ZSH_VERSION" ]; then
-    export ROS2_WS="$(cd -- "$(dirname "${(%):-%x}")" >/dev/null 2>&1; pwd -P)"
+    export ROS2_WS="$(cd -- "$(dirname "${(%):-%x}")" > /dev/null 2>&1; pwd -P)"
     shell="zsh"
 else
   echo "Unsupported shell"
