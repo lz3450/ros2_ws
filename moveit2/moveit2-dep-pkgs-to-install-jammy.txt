@@ -5,6 +5,7 @@ freeglut3
 freeglut3-dev
 gfortran
 gfortran-11
+lcov
 libaec-dev
 libasound2-dev
 libblkid-dev
@@ -102,6 +103,7 @@ libccd-dev
 libccd2
 libcoarrays-dev
 libcoarrays-openmpi-dev
+libcommon-sense-perl
 libcwiid-dev
 libcwiid1
 libdbus-1-dev
@@ -122,6 +124,7 @@ libffi-dev
 libflann-dev
 libflann1.9
 libgbm-dev
+libgd-perl
 libgfortran-11-dev
 libglew-dev
 libglib2.0-dev
@@ -137,6 +140,8 @@ libhdf5-openmpi-hl-fortran-100
 libhwloc-dev
 libibus-1.0-dev
 libibverbs-dev
+libjson-perl
+libjson-xs-perl
 libltdl-dev
 liblz4-dev
 libmount-dev
@@ -159,6 +164,7 @@ libpcre2-posix3
 libpcre3-dev
 libpcre32-3
 libpcrecpp0v5
+libperlio-gzip-perl
 libpmix-dev
 libpulse-dev
 libqglviewer-dev-qt5
@@ -179,6 +185,7 @@ libsndio7.0
 libspnav-dev
 libspnav0
 libtool
+libtypes-serialiser-perl
 libudev-dev
 liburdfdom-headers-dev
 libwayland-bin

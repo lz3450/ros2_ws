@@ -48,5 +48,8 @@ install_moveit2_dep_pkgs() {
     grep -v 'ros-' "$MOVEIT2_DEP_PKGS_FILE" | xargs sudo apt-get install -s \
         | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n \
         > "$MOVEIT2_DEP_PKGS_TO_INSTALL_FILE"
-    xargs -a "$MOVEIT2_DEP_PKGS_FILE" sudo apt-get install -y
+
+    if [[ -s "$MOVEIT2_DEP_PKGS_FILE" ]]; then
+        grep -v 'ros-' "$MOVEIT2_DEP_PKGS_FILE" | xargs sudo apt-get install -y
+    fi
 }

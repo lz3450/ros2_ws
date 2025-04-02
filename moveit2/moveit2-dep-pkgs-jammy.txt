@@ -1,5 +1,6 @@
 curl
 freeglut3-dev
+lcov
 libassimp-dev
 libbluetooth-dev
 libbluetooth3
@@ -19,6 +20,7 @@ libfmt-dev
 libgl1-mesa-dev
 libglew-dev
 libglu1-mesa-dev
+libgtest-dev
 liboctomap-dev
 libode-dev
 libomp-dev
@@ -35,7 +37,6 @@ librange-v3-dev
 libsdl2-dev
 libspnav-dev
 libssl-dev
-libtinyxml-dev
 liburdfdom-headers-dev
 libx11-dev
 lm-sensors
@@ -55,5 +56,8 @@ python3-setuptools
 python3-typeguard
 python3-yaml
 qtbase5-dev
+ros-humble-google-benchmark-vendor
+ros-humble-kinova-gen3-7dof-robotiq-2f-85-moveit-config
+ros-humble-urdfdom
 ros-humble-urdfdom-headers
 spacenavd

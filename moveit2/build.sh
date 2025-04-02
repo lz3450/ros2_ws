@@ -15,6 +15,9 @@ if [[ ! -d "src" ]]; then
     get_moveit2_src
 fi
 
+# Add the following line to `moveit2/src/moveit2/moveit_planners/stomp/CMakeLists.txt`
+# include_directories(SYSTEM ${stomp_INCLUDE_DIRS})
+
 COMMON_OPTIONS=(
     --mixin release
     --parallel-workers $(nproc)
