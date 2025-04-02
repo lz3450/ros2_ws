@@ -57,7 +57,6 @@ python3-typeguard
 python3-yaml
 qtbase5-dev
 ros-humble-google-benchmark-vendor
-ros-humble-kinova-gen3-7dof-robotiq-2f-85-moveit-config
 ros-humble-urdfdom
 ros-humble-urdfdom-headers
 spacenavd
