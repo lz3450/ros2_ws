@@ -17,9 +17,9 @@ get_moveit2_src() {
     if [[ ! -d "src" ]]; then
         mkdir -p src
     fi
-    vcs import --force --shallow --recursive --input deps.repos src
-    vcs import --force --shallow --recursive --input src/moveit2_tutorials/moveit2_tutorials.repos src
-    vcs import --force --shallow --recursive --input src/moveit2/moveit2.repos src
+    vcs import --force --recursive --input deps.repos src
+    vcs import --force --recursive --input src/moveit2_tutorials/moveit2_tutorials.repos src
+    vcs import --force --recursive --input src/moveit2/moveit2.repos src
 }
 
 update_moveit2_dep_pkgs() {
