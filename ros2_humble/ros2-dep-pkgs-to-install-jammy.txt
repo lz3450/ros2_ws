@@ -89,6 +89,7 @@ libgl1-mesa-dev
 libgl2ps1.4
 libgles-dev
 libgles1
+libglew-dev
 libglew2.2
 libglu1-mesa
 libglu1-mesa-dev
@@ -276,7 +277,6 @@ libva2
 libvdpau1
 libvtk9.1
 libvulkan-dev
-libvulkan1
 libx11-dev
 libx264-163
 libx265-199
@@ -296,7 +296,6 @@ libxpm-dev
 libxrandr-dev
 libxrender-dev
 libxsimd-dev
-libxss1
 libxt-dev
 libxvidcore4
 libyaml-cpp-dev
@@ -308,7 +307,6 @@ libzvbi-common
 libzvbi0
 mesa-va-drivers
 mesa-vdpau-drivers
-mesa-vulkan-drivers
 mysql-common
 ocl-icd-libopencl1
 opencv-data
