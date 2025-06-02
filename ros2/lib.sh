@@ -14,17 +14,21 @@ ROS2_DEV_TOOLS_DEP_PKGS_FILE="ros2-dev-tools-dep-pkgs-$UBUNTU_CODENAME.txt"
 ROS2_DEP_PKGS_FILE="ros2-dep-pkgs-$UBUNTU_CODENAME.txt"
 ROS2_DEP_PKGS_TO_INSTALL_FILE="ros2-dep-pkgs-to-install-$UBUNTU_CODENAME.txt"
 
-ros2_repo_setup() {
+setup_ros2_repo() {
     ### ROS2 building environment setup
     # https://docs.ros.org/en/$ROS_DISTRO/Installation/Alternatives/Ubuntu-Development-Setup.html
-    sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/ros2.list
+    sudo apt update && sudo apt install curl -y
+    export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | grep -F "tag_name" | awk -F\" '{print $4}')
+    curl -L -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros2-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release && echo $VERSION_CODENAME)_all.deb"
+    sudo apt install /tmp/ros2-apt-source.deb
 }
 
 update_ros2_dev_tools_dep_pkgs() {
     sudo apt-get update
     sudo apt-get install -s \
+        python3-flake8-docstrings \
         python3-pip \
+        python3-pytest-cov \
         ros-dev-tools \
         | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n \
         > "$ROS2_DEV_TOOLS_DEP_PKGS_FILE"
@@ -33,7 +37,9 @@ update_ros2_dev_tools_dep_pkgs() {
 install_ros2_dev_tools_dep_pkgs() {
     sudo apt-get update
     sudo apt-get install -y \
+        python3-flake8-docstrings \
         python3-pip \
+        python3-pytest-cov \
         ros-dev-tools
 }
 
