@@ -2,7 +2,7 @@
     "version": "0.2",
     "ignorePaths": [
         "*.repos",
-        "*.txt",
+        "*.txt"
     ],
     "dictionaryDefinitions": [],
     "dictionaries": [],
@@ -36,6 +36,7 @@
         "remappings",
         "respawn",
         "Robo",
+        "robotrace",
         "Roni",
         "rosdep",
         "rosdistro",
