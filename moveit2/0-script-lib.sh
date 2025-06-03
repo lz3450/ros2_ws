@@ -28,6 +28,7 @@ update_moveit2_dep_pkgs() {
         --reinstall \
         --from-paths src \
         --ignore-src \
+        --skip-keys="urdfdom urdfdom_headers" \
         -s | awk '{print $5}' | sed -E -e '/^\s*$/d' -e "s/'$//g" | LC_ALL=C sort -n > "$MOVEIT2_DEP_PKGS_FILE"
 
     sed -i \

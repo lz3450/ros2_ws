@@ -2,11 +2,11 @@ repositories:
   moveit2_tutorials:
     type: git
     url: https://github.com/moveit/moveit2_tutorials.git
-    version: main
+    version: humble
   moveit2:
     type: git
     url: https://github.com/moveit/moveit2.git
-    version: main
+    version: humble
   object_recognition_msgs:
     type: git
     url: https://github.com/wg-perception/object_recognition_msgs.git
@@ -95,10 +95,6 @@ repositories:
     type: git
     url: https://github.com/pal-robotics/backward_ros.git
     version: foxy-devel
-  # urdfdom:
-  #   type: git
-  #   url: https://github.com/ros/urdfdom.git
-  #   version: humble
   urdfdom_py:
     type: git
     url: https://github.com/ros/urdf_parser_py.git
@@ -135,51 +131,3 @@ repositories:
     type: git
     url: https://github.com/octomap/octomap.git
     version: devel
-  # google_benchmark_vendor:
-  #   type: git
-  #   url: https://github.com/ament/google_benchmark_vendor.git
-  #   version: humble
-  launch_param_builder:
-    type: git
-    url: https://github.com/PickNikRobotics/launch_param_builder.git
-    version: main
-  osqp_vendor:
-    type: git
-    url: https://github.com/tier4/osqp_vendor.git
-    version: main
-  rmf_utils:
-    type: git
-    url: https://github.com/open-rmf/rmf_utils.git
-    version: humble
-  ament_cmake_catch2:
-    type: git
-    url: https://github.com/open-rmf/ament_cmake_catch2.git
-    version: humble
-  srdfdom:
-    type: git
-    url: https://github.com/ros-planning/srdfdom.git
-    version: ros2
-  topic_tools:
-    type: git
-    url: https://github.com/ros-tooling/topic_tools.git
-    version: humble
-  warehouse_ros_sqlite:
-    type: git
-    url: https://github.com/ros-planning/warehouse_ros_sqlite.git
-    version: ros2
-  stomp:
-    type: git
-    url: https://github.com/ros-industrial/stomp.git
-    version: main
-  ros_industrial_cmake_boilerplate:
-    type: git
-    url: https://github.com/ros-industrial/ros_industrial_cmake_boilerplate.git
-    version: master
-  picknik_controllers:
-    type: git
-    url: https://github.com/PickNikRobotics/picknik_controllers.git
-    version: main
-  # gz_ros2_control:
-  #   type: git
-  #   url: https://github.com/ros-controls/gz_ros2_control.git
-  #   version: humble
