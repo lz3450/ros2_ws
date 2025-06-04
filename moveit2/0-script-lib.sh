@@ -1,7 +1,6 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 . /etc/os-release
-. ../ros2_setup.sh
 
 MOVEIT2_DEP_PKGS_FILE="moveit2-dep-pkgs-$UBUNTU_CODENAME.txt"
 MOVEIT2_DEP_PKGS_TO_INSTALL_FILE="moveit2-dep-pkgs-to-install-$UBUNTU_CODENAME.txt"

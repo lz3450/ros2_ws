@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 set -e
 set -o pipefail
@@ -9,7 +9,9 @@ umask 0022
 
 ################################################################################
 
-. ./0-script-lib.sh
+. ../ros2_setup.sh
+
+export MAKEFLAGS="-j $(nproc)"
 
 if [[ ! -d "src" ]]; then
     get_moveit2_src
@@ -19,11 +21,11 @@ COMMON_OPTIONS=(
     --mixin release
     --parallel-workers $(nproc)
     # --continue-on-error
-    --packages-skip-build-finished
+    # --packages-skip-build-finished
     --cmake-args
     -Wno-dev
     "-DCMAKE_BUILD_TYPE=Release"
     # "-DBUILD_TESTING=OFF"
 )
 
-MAKEFLAGS="-j $(nproc)" colcon build "${COMMON_OPTIONS[@]}"
+colcon build "${COMMON_OPTIONS[@]}"
