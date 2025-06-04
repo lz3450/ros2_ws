@@ -2,9 +2,11 @@
 /*/src
 /*/build
 /*/build-merge
+/*/build-opt
 /*/install
 /*/install-merge
 /*/log
+/*/log-opt
 
 /utils/*.dot
 
