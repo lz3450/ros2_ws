@@ -9,5 +9,7 @@ umask 0022
 
 ################################################################################
 
-rm -rf build install log src
-sudo rm -rf build-opt log-opt
+ROS_DISTRO=humble
+. ../ros2/lib.sh
+
+update_ros2_dep_pkgs

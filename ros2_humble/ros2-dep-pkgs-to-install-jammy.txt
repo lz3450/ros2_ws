@@ -315,7 +315,6 @@ proj-bin
 proj-data
 pybind11-dev
 pydocstyle
-pyflakes3
 pyqt5-dev
 python-matplotlib-data
 python3-appdirs
@@ -325,7 +324,6 @@ python3-brotli
 python3-bs4
 python3-cycler
 python3-decorator
-python3-flake8
 python3-fonttools
 python3-fs
 python3-gast
@@ -336,7 +334,6 @@ python3-lttng
 python3-lxml
 python3-lz4
 python3-matplotlib
-python3-mccabe
 python3-mpmath
 python3-mypy
 python3-mypy-extensions
@@ -345,10 +342,7 @@ python3-numpy
 python3-pil.imagetk
 python3-ply
 python3-psutil
-python3-pycodestyle
-python3-pydocstyle
 python3-pydot
-python3-pyflakes
 python3-pygraphviz
 python3-pykdl
 python3-pyqt5
@@ -365,7 +359,6 @@ python3-rospkg
 python3-scipy
 python3-sip
 python3-sip-dev
-python3-snowballstemmer
 python3-soupsieve
 python3-sympy
 python3-tk

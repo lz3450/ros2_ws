@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 #
 # ros2/lib.sh
 #
@@ -36,7 +36,7 @@ update_ros2_dev_tools_dep_pkgs() {
 
 install_ros2_dev_tools_dep_pkgs() {
     sudo apt-get update
-    sudo apt-get install -y \
+    sudo apt-get install \
         python3-flake8-docstrings \
         python3-pip \
         python3-pytest-cov \
@@ -88,7 +88,7 @@ install_ros2_dep_pkgs() {
         > "$ROS2_DEP_PKGS_TO_INSTALL_FILE"
 
     if [[ -s "$ROS2_DEP_PKGS_FILE" ]]; then
-        xargs -a "$ROS2_DEP_PKGS_FILE" sudo apt-get install -y
+        xargs -a "$ROS2_DEP_PKGS_FILE" sudo apt-get install
     fi
 }
 

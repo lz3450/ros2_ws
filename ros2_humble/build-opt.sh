@@ -11,7 +11,8 @@ umask 0022
 
 export MAKEFLAGS="-j $(nproc)"
 
-colcon build \
+sudo -E colcon --log-base log-opt \
+    build \
     --build-base build-opt \
     --install-base /opt/ros/humble \
     --merge-install \
