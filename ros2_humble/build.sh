@@ -1,6 +1,13 @@
 #!/bin/bash
 
 set -e
+set -o pipefail
+# set -u
+# set -x
+
+umask 0022
+
+################################################################################
 
 export MAKEFLAGS="-j $(nproc)"
 
