@@ -18,8 +18,8 @@ if [[ -f "$ROS2_SETUP" ]]; then
     . "$ROS2_SETUP"
 fi
 
-MOVEIT2_WS_SETUP="$ROS2_WS/moveit2"
-if [[ -f "$MOVEIT2_WS_SETUP/install/local_setup.$shell" ]]; then
+MOVEIT2_SETUP="$ROS2_WS/moveit2_humble"
+if [[ -f "$MOVEIT2_SETUP/install/local_setup.$shell" ]]; then
     echo "moveit2 ($shell)"
-    . "$MOVEIT2_WS_SETUP/install/local_setup.$shell"
+    . "$MOVEIT2_SETUP/install/local_setup.$shell"
 fi
