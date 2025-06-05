@@ -9,4 +9,4 @@ umask 0022
 
 ################################################################################
 
-tar --zstd -vcf moveit2_backup.tar.zst build install src log
+tar --zstd -vcf nav2_backup.tar.zst build install src log
