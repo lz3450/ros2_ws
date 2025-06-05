@@ -15,6 +15,7 @@ export MAKEFLAGS="-j $(nproc)"
 
 COMMON_OPTIONS=(
     --mixin release
+    --symlink-install
     --parallel-workers $(nproc)
     # --continue-on-error
     # --packages-skip-build-finished
