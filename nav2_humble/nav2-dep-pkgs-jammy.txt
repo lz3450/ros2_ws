@@ -1,11 +1,6 @@
 graphicsmagick-libmagick-dev-compat
 libbenchmark-dev
 libboost-all-dev
-libboost-dev
-libboost-program-options1.74.0
-libboost-program-options-dev
-libboost-python1.74.0
-libboost-python-dev
 libceres-dev
 libeigen3-dev
 libflann-dev

@@ -1,8 +1,17 @@
 #!/bin/bash
 
 set -e
+set -o pipefail
+# set -u
+# set -x
 
-source ../ros2_setup.sh
+umask 0022
+
+################################################################################
+
+. ../ros2_setup.sh
+
+export MAKEFLAGS="-j $(nproc)"
 
 COMMON_OPTIONS=(
     --symlink-install
@@ -11,26 +20,8 @@ COMMON_OPTIONS=(
     # --packages-skip-build-finished
     --cmake-args
     -Wno-dev
+    "-DCMAKE_BUILD_TYPE=Release"
+    # "-DBUILD_TESTING=OFF"
 )
 
-# if [[ -d "/opt/llvm-project" ]]; then
-#     COMMON_OPTIONS+=(
-#         --cmake-args
-#         "-DCMAKE_VERBOSE_MAKEFILE=ON"
-#         "-DCMAKE_C_COMPILER=/opt/llvm-project/bin/clang"
-#         "-DCMAKE_CXX_COMPILER=/opt/llvm-project/bin/clang++"
-#     )
-#     export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-# fi
-
-export CMAKE_COMMAND="/usr/bin/cmake"
-export MAKEFLAGS="-j $(nproc)"
-
-colcon build \
-    "${COMMON_OPTIONS[@]}"
-
-# colcon build \
-#     --build-base build-merge \
-#     --install-base install-merge \
-#     --merge-install \
-#     "${COMMON_OPTIONS[@]}"
+colcon build "${COMMON_OPTIONS[@]}"

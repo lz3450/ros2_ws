@@ -3,8 +3,12 @@ automake
 autotools-dev
 bzip2-doc
 comerr-dev
+fonts-droid-fallback
+fonts-noto-mono
+fonts-urw-base35
 gfortran
 gfortran-11
+ghostscript
 graphicsmagick-libmagick-dev-compat
 gsfonts
 krb5-multidev
@@ -132,6 +136,8 @@ libgraphicsmagick++-q16-12
 libgraphicsmagick++1-dev
 libgraphicsmagick-q16-3
 libgraphicsmagick1-dev
+libgs9
+libgs9-common
 libgssrpc4
 libhdf5-mpi-dev
 libhdf5-openmpi-103-1
@@ -144,6 +150,9 @@ libhdf5-openmpi-hl-fortran-100
 libheif-dev
 libhwloc-dev
 libibverbs-dev
+libidn12
+libijs-0.35
+libjbig2dec0
 libkadm5clnt-mit12
 libkadm5srv-mit12
 libkdb5-10
@@ -180,7 +189,9 @@ libtool
 libumfpack5
 libunwind-dev
 libwebp-dev
+libwmf-0.2-7
 libwmf-dev
+libwmflite-0.2-7
 libx265-dev
 libxml2-dev
 libxtensor-dev
