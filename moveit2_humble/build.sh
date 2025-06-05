@@ -13,10 +13,6 @@ umask 0022
 
 export MAKEFLAGS="-j $(nproc)"
 
-if [[ ! -d "src" ]]; then
-    get_moveit2_src
-fi
-
 COMMON_OPTIONS=(
     --mixin release
     --parallel-workers $(nproc)

@@ -26,5 +26,3 @@ done
 # git -C "src/moveit2_tutorials" apply ../../patches/moveit2_tutorials.patch
 # git -C "src/moveit_task_constructor" apply ../../patches/moveit_task_constructor.patch
 # git -C "src/moveit_visual_tools" apply ../../patches/moveit_visual_tools.patch
-
-update_moveit2_dep_pkgs

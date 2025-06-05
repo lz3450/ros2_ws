@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 set -e
 set -o pipefail
@@ -9,5 +9,6 @@ umask 0022
 
 ################################################################################
 
-rm -rf build install log src
-sudo rm -rf build-opt log-opt
+. ./0-script-lib.sh
+
+update_moveit2_dep_pkgs
