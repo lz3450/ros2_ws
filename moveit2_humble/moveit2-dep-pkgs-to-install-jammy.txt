@@ -141,6 +141,7 @@ liblz4-dev
 libmount-dev
 libnl-3-dev
 libnl-route-3-dev
+libnss-systemd
 libnuma-dev
 liboctomap-dev
 liboctomap1.9
@@ -150,6 +151,7 @@ libomp-14-dev
 libomp-dev
 libomp5-14
 libopenmpi-dev
+libpam-systemd
 libpciaccess-dev
 libpcre16-3
 libpcre2-32-0
@@ -177,8 +179,10 @@ libsndio-dev
 libsndio7.0
 libspnav-dev
 libspnav0
+libsystemd0
 libtool
 libudev-dev
+libudev1
 liburdfdom-headers-dev
 libwayland-bin
 libwayland-dev
@@ -204,4 +208,8 @@ python3-ntplib
 python3-opencv
 python3-typeguard
 spacenavd
+systemd
+systemd-sysv
+systemd-timesyncd
+udev
 uuid-dev
