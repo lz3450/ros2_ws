@@ -15,11 +15,12 @@ init_mixin
 
 get_moveit2_src
 
-for patch in patches/*.patch; do
+for patch in $(find patches -type f -name "*.patch"); do
   repo=$(basename "$patch" .patch)
   echo "Applying patch: $patch to src/$repo"
   git -C "src/$repo" apply "../../$patch"
 done
+unset patch repo
 
 # git -C "src/geometric_shapes" apply ../../patches/geometric_shapes.patch
 # git -C "src/moveit2" apply ../../patches/moveit2.patch
