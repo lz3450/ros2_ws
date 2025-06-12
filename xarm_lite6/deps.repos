@@ -1,0 +1,25 @@
+repositories:
+  xarm_ros2:
+    type: git
+    url: https://github.com/xArm-Developer/xarm_ros2.git
+    version: humble
+  image_pipeline:
+    type: git
+    url: https://github.com/ros-perception/image_pipeline.git
+    version: humble
+  tf_transformations:
+    type: git
+    url: https://github.com/DLu/tf_transformations.git
+    version: main
+  find_object:
+    type: git
+    url: https://github.com/introlab/find-object.git
+    version: humble-devel
+  # backward_ros:
+  #   type: git
+  #   url: https://github.com/pal-robotics/backward_ros.git
+  #   version: foxy-devel
+  # gazebo_ros_pkgs:
+  #   type: git
+  #   url: https://github.com/ros-simulation/gazebo_ros_pkgs.git
+  #   version: ros2

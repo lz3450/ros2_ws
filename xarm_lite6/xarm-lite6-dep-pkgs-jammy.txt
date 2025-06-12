@@ -1,0 +1,8 @@
+libopencv-dev
+python3-numpy
+python3-opencv
+python3-pytest
+python3-requests
+python3-semver
+python3-transforms3d
+qtbase5-dev
