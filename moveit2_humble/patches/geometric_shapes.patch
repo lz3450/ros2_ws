@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 8c46189..4c1cadc 100644
+index 445b836..dca16d8 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -36,7 +36,7 @@ set(assimp_LIBRARIES "${assimp_ABS_LIBRARIES}")
