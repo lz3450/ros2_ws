@@ -25,7 +25,7 @@ setup_ros2_repo() {
 
 update_ros2_dev_tools_dep_pkgs() {
     sudo apt-get update
-    sudo apt-get install -s \
+    sudo apt-get install --no-install-recommends -s \
         python3-flake8-docstrings \
         python3-pip \
         python3-pytest-cov \
@@ -36,7 +36,7 @@ update_ros2_dev_tools_dep_pkgs() {
 
 install_ros2_dev_tools_dep_pkgs() {
     sudo apt-get update
-    sudo apt-get install \
+    sudo apt-get install --no-install-recommends \
         python3-flake8-docstrings \
         python3-pip \
         python3-pytest-cov \
@@ -83,12 +83,12 @@ update_ros2_dep_pkgs() {
 }
 
 install_ros2_dep_pkgs() {
-    xargs -a "$ROS2_DEP_PKGS_FILE" sudo apt-get install -s \
+    xargs -a "$ROS2_DEP_PKGS_FILE" sudo apt-get install --no-install-recommends -s \
         | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n \
         > "$ROS2_DEP_PKGS_TO_INSTALL_FILE"
 
     if [[ -s "$ROS2_DEP_PKGS_FILE" ]]; then
-        xargs -a "$ROS2_DEP_PKGS_FILE" sudo apt-get install
+        xargs -a "$ROS2_DEP_PKGS_FILE" sudo apt-get install --no-install-recommends
     fi
 }
 
@@ -148,8 +148,8 @@ install_ros2_dep_pkgs_custom() {
         qtbase5-dev
         libogre-1.12-dev
     )
-    sudo apt-get install -s "${_deb_pkgs[@]}" | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n > customized-$ROS_DISTRO-pkgs-to-install-$UBUNTU_CODENAME.txt
-    sudo apt-get install -y "${_deb_pkgs[@]}"
+    sudo apt-get install --no-install-recommends -s "${_deb_pkgs[@]}" | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n > customized-$ROS_DISTRO-pkgs-to-install-$UBUNTU_CODENAME.txt
+    sudo apt-get install --no-install-recommends -y "${_deb_pkgs[@]}"
     local -a _pip_pkgs=(
         pybind11
     )
