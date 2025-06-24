@@ -38,11 +38,11 @@ update_tb4_desktop_dep_pkgs() {
 }
 
 install_tb4_desktop_dep_pkgs() {
-    grep -v 'ros-' "$TB4_DESKTOP_DEP_PKGS_FILE" | xargs sudo apt-get install -s \
+    grep -v 'ros-' "$TB4_DESKTOP_DEP_PKGS_FILE" | xargs sudo apt-get install --no-install-recommends -s \
         | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n \
         > "$TB4_DESKTOP_DEP_PKGS_TO_INSTALL_FILE"
 
     if [[ -s "$TB4_DESKTOP_DEP_PKGS_FILE" ]]; then
-        grep -v 'ros-' "$TB4_DESKTOP_DEP_PKGS_FILE" | xargs sudo apt-get install -y
+        grep -v 'ros-' "$TB4_DESKTOP_DEP_PKGS_FILE" | xargs sudo apt-get install --no-install-recommends -y
     fi
 }
