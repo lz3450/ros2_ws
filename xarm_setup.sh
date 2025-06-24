@@ -23,3 +23,9 @@ if [[ -f "$MOVEIT2_SETUP" ]]; then
     echo "moveit2 ($shell)"
     . "$MOVEIT2_SETUP"
 fi
+
+XARM_SETUP="$ROS2_WS/xarm_lite6/install/local_setup.$shell"
+if [[ -f "$XARM_SETUP" ]]; then
+    echo "xarm ($shell)"
+    . "$XARM_SETUP"
+fi
