@@ -1,0 +1,31 @@
+FROM scratch
+ADD rootfs-amd64-ubuntu-jammy.tar.zst /
+
+# Install required packages
+RUN apt-get update && apt-get upgrade -y
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential
+
+# ssh
+RUN ssh-keygen -A
+RUN mkdir -p /run/sshd
+
+# ros2
+RUN useradd -u 1001 -m -U -G adm,sudo -s /bin/zsh rt
+RUN echo "rt:password" | chpasswd
+USER rt
+WORKDIR /home/rt
+RUN mkdir -p /home/rt/ros2_ws
+RUN git clone https://github.com/lz3450/LFS
+
+#
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]
+
+# Build the image
+# docker build --no-cache -t humble:init . -f Containerfile_rt
+
+# Run the container in interactive mode
+# docker run -i -t --rm -u root -p 2222:22 --name humble -h HUMBLE <REPOSITORY:TAG> /bin/bash
+
+# Run the container in detached mode
+# docker run -d --rm -u root -p 2222:22 --name humble -h HUMBLE --mount type=bind,source=/home/rt/ros2_ws,target=/home/rt/ros2_ws <REPOSITORY:TAG>
