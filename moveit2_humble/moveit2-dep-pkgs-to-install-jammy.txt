@@ -9,7 +9,6 @@ libaec-dev
 libasound2-dev
 libblkid-dev
 libbluetooth-dev
-libbluetooth3
 libboost-all-dev
 libboost-atomic-dev
 libboost-atomic1.74-dev
@@ -195,7 +194,6 @@ libxinerama-dev
 libxkbcommon-dev
 libxss-dev
 libxv-dev
-libxv1
 libxxf86vm-dev
 lm-sensors
 m4
