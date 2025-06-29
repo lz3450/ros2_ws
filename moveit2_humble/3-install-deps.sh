@@ -12,3 +12,5 @@ umask 0022
 . ./0-script-lib.sh
 
 install_moveit2_dep_pkgs
+
+echo "Successfully installed MoveIt2 dependencies"
