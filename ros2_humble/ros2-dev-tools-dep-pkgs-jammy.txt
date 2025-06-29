@@ -12,6 +12,7 @@ libjsoncpp25
 librhash0
 libuv1
 python3-argcomplete
+python3-attr
 python3-bloom
 python3-catkin-pkg
 python3-catkin-pkg-modules
@@ -72,6 +73,7 @@ python3-rosdistro
 python3-rosdistro-modules
 python3-rospkg-modules
 python3-setuptools
+python3-six
 python3-snowballstemmer
 python3-toml
 python3-vcstool
