@@ -14,3 +14,5 @@ ROS_DISTRO=humble
 
 update_ros2_dev_tools_dep_pkgs
 install_ros2_dev_tools_dep_pkgs
+
+echo "Successfully set up ROS 2 $ROS_DISTRO development tools dependencies"

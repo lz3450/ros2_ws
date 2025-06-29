@@ -14,3 +14,5 @@ ROS_DISTRO=humble
 
 wget https://raw.githubusercontent.com/ros2/ros2/$ROS_DISTRO/ros2.repos -O ros2.repos
 get_ros2_src ros2.repos
+
+echo "Successfully updated ROS 2 $ROS_DISTRO source code"

@@ -13,3 +13,5 @@ ROS_DISTRO=humble
 . ../ros2/lib.sh
 
 setup_ros2_repo
+
+echo "Successfully set up ROS 2 $ROS_DISTRO repository"
