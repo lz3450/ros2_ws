@@ -12,3 +12,5 @@ umask 0022
 . ./0-script-lib.sh
 
 install_xarm_lite6_dep_pkgs
+
+echo "Successfully installed xArm Lite6 dependencies"

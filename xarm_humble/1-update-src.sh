@@ -33,3 +33,5 @@ for pkg in "${UNUSED_PKGS[@]}"; do
         echo "Package $pkg not found, skipping."
     fi
 done
+
+echo "Successfully updated xArm Lite6 source code and applied patches"

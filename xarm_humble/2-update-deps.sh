@@ -15,3 +15,5 @@ umask 0022
 . ./0-script-lib.sh
 
 update_xarm_lite6_dep_pkgs
+
+echo "Successfully updated xArm Lite6 dependencies"
