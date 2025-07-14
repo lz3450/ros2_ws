@@ -22,7 +22,7 @@ EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
 
 # Build the image
-# docker build --no-cache -t humble:init . -f Containerfile
+# docker build --no-cache -t humble:init -f Containerfile .
 
 # Run the container in interactive mode
 # docker run -i -t --rm -u root -p 2222:22 --name humble -h HUMBLE <REPOSITORY:TAG> /bin/bash
