@@ -46,7 +46,7 @@ repositories:
   ruckig:
     type: git
     url: https://github.com/pantor/ruckig.git
-    version: main
+    version: v0.15.3
   control_msgs:
     type: git
     url: https://github.com/ros-controls/control_msgs.git
