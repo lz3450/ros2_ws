@@ -12,3 +12,5 @@ umask 0022
 . ./0-script-lib.sh
 
 install_nav2_dep_pkgs
+
+echo "Successfully installed Navigation2 dependencies"
