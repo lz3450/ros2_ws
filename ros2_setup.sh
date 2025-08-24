@@ -13,9 +13,9 @@ fi
 
 ROS2_SETUP="$ROS2_WS/ros2_humble/install/local_setup.$shell"
 if [[ -f "$ROS2_SETUP" ]]; then
-    export RMW_IMPLEMENTATION="rmw_fastrtps_cpp"
+    # export RMW_IMPLEMENTATION="rmw_fastrtps_cpp"
     # export RMW_IMPLEMENTATION="rmw_cyclonedds_cpp"
-    export ROS_PYTHON_VERSION=3
+    # export ROS_PYTHON_VERSION=3
     echo "ros2_humble ($shell)"
     . "$ROS2_SETUP"
 fi
