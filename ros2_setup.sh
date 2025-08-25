@@ -6,16 +6,22 @@ if [ -z "$ROS2_WS" ]; then
         export ROS2_WS="$(cd -- "$(dirname "${(%):-%x}")" > /dev/null 2>&1; pwd -P)"
         shell="zsh"
     else
-    echo "Unsupported shell"
+        echo "Unsupported shell"
     fi
-    echo "ros2_ws: $ROS2_WS"
 fi
+echo "ROS2_WS=$ROS2_WS"
+
+export ROS_DOMAIN_ID=77
+echo "ROS_DOMAIN_ID=$ROS_DOMAIN_ID"
+export RMW_IMPLEMENTATION="rmw_fastrtps_cpp"
+# export RMW_IMPLEMENTATION="rmw_cyclonedds_cpp"
+echo "RMW_IMPLEMENTATION=$RMW_IMPLEMENTATION"
 
 ROS2_SETUP="$ROS2_WS/ros2_humble/install/local_setup.$shell"
 if [[ -f "$ROS2_SETUP" ]]; then
-    # export RMW_IMPLEMENTATION="rmw_fastrtps_cpp"
-    # export RMW_IMPLEMENTATION="rmw_cyclonedds_cpp"
-    # export ROS_PYTHON_VERSION=3
     echo "ros2_humble ($shell)"
     . "$ROS2_SETUP"
+else
+    echo "failed to set up ros2_humble"
+    exit 1
 fi
