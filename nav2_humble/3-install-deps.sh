@@ -13,4 +13,4 @@ umask 0022
 
 install_nav2_dep_pkgs
 
-echo "Successfully installed Navigation2 dependencies"
+echo "Successfully installed Nav2 dependencies"
