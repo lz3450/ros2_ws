@@ -11,5 +11,3 @@ else
     echo "failed to set up nav2_humble"
     exit 1
 fi
-
-export NAV2_SETUP=1

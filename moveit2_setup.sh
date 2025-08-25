@@ -11,5 +11,3 @@ else
     echo "failed to set up moveit2_humble"
     exit 1
 fi
-
-export MOVEIT2_SETUP=1
