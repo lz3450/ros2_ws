@@ -25,3 +25,5 @@ else
     echo "failed to set up ros2_humble"
     exit 1
 fi
+
+export ROS2_SETUP=1
