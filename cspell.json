@@ -33,6 +33,7 @@
         "octomap",
         "ompl",
         "opencv",
+        "pkglist",
         "pkgs",
         "rankdir",
         "rclcpp",
