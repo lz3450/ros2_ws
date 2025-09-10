@@ -23,5 +23,5 @@ if [[ -f "$ROS2_SETUP" ]]; then
     . "$ROS2_SETUP"
 else
     echo "failed to set up ros2_humble"
-    exit 1
+    return 1
 fi
