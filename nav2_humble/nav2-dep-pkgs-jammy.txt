@@ -6,6 +6,7 @@ libeigen3-dev
 libflann-dev
 libgraphicsmagick++1-dev
 liblapack-dev
+libnanoflann-dev
 libncurses-dev
 libode-dev
 libomp-dev
