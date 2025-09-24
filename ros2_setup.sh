@@ -1,13 +1,11 @@
-if [ -z "$ROS2_WS" ]; then
-    if [ -n "$BASH_VERSION" ]; then
-        export ROS2_WS="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1; pwd -P)"
-        shell="bash"
-    elif [ -n "$ZSH_VERSION" ]; then
-        export ROS2_WS="$(cd -- "$(dirname "${(%):-%x}")" > /dev/null 2>&1; pwd -P)"
-        shell="zsh"
-    else
-        echo "Unsupported shell"
-    fi
+if [ -n "$BASH_VERSION" ]; then
+    export ROS2_WS="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1; pwd -P)"
+    ROS2_SHELL="bash"
+elif [ -n "$ZSH_VERSION" ]; then
+    export ROS2_WS="$(cd -- "$(dirname "${(%):-%x}")" > /dev/null 2>&1; pwd -P)"
+    ROS2_SHELL="zsh"
+else
+    echo "Unsupported shell"
 fi
 echo "ROS2_WS=$ROS2_WS"
 
@@ -17,9 +15,9 @@ export RMW_IMPLEMENTATION="rmw_fastrtps_cpp"
 # export RMW_IMPLEMENTATION="rmw_cyclonedds_cpp"
 echo "RMW_IMPLEMENTATION=$RMW_IMPLEMENTATION"
 
-ROS2_SETUP="$ROS2_WS/ros2_humble/install/local_setup.$shell"
+ROS2_SETUP="$ROS2_WS/ros2_humble/install/local_setup.$ROS2_SHELL"
 if [[ -f "$ROS2_SETUP" ]]; then
-    echo "ros2_humble ($shell)"
+    echo "ros2_humble ($ROS2_SHELL)"
     . "$ROS2_SETUP"
 else
     echo "failed to set up ros2_humble"
