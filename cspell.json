@@ -61,10 +61,13 @@
         "undocked",
         "urdf",
         "urdfdom",
+        "vcf",
         "vcs",
         "WS",
         "xacro",
-        "xarm"
+        "xarm",
+        "zst",
+        "zstd"
     ],
     "ignoreWords": [],
     "import": []
