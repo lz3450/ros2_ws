@@ -9,4 +9,4 @@ umask 0022
 
 ################################################################################
 
-tar --zstd -vcf xarm_lite6_backup.tar.zst build install src log
+tar --zstd -vcf xarm_backup.tar.zst build install src log

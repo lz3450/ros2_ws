@@ -16,7 +16,7 @@ UNUSED_PKGS=(
     "xarm_ros2/thirdparty/realsense_gazebo_plugin"
 )
 
-get_xarm_lite6_src
+get_xarm_src
 
 for patch in $(find patches -type f -name "*.patch"); do
   repo=$(basename "$patch" .patch)
@@ -34,4 +34,4 @@ for pkg in "${UNUSED_PKGS[@]}"; do
     fi
 done
 
-echo "Successfully updated xArm Lite6 source code and applied patches"
+echo "Successfully updated xArm source code and applied patches"
