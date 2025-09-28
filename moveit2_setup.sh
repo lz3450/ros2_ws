@@ -1,5 +1,5 @@
-if [ -z "$ROS2_WS" ]; then
-    echo "ROS2_WS is not set. Please source ros2_setup.sh first"
+if [[ -z "$ROS2_SETUP" ]]; then
+    echo "ROS2 is not sourced. Please source ros2_setup.sh first"
     return 1
 fi
 

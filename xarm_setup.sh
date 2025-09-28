@@ -1,9 +1,12 @@
-if [ -z "$ROS2_WS" ]; then
-    echo "ROS2_WS is not set. Please source ros2_setup.sh first"
+if [[ -z "$ROS2_SETUP" ]]; then
+    echo "ROS2 is not sourced. Please source ros2_setup.sh first"
     return 1
 fi
 
-. "$ROS2_WS/moveit2_setup.sh"
+if [[ -z "$MOVEIT2_SETUP" ]]; then
+    echo "MoveIt2 is not sourced. Please source moveit2_setup.sh first"
+    return 1
+fi
 
 XARM_SETUP="$ROS2_WS/xarm_humble/install/local_setup.$ROS2_SHELL"
 if [[ -f "$XARM_SETUP" ]]; then
