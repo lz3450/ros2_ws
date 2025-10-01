@@ -35,7 +35,7 @@ update_xarm_dep_pkgs() {
 
 install_xarm_dep_pkgs() {
     grep -v 'ros-' "$XARM_DEP_PKGS_FILE" | xargs sudo apt-get install --no-install-recommends -s \
-        | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n \
+        | (grep "^Inst" || :) | awk '{print $2}' | LC_ALL=C sort -n \
         > "$XARM_DEP_PKGS_TO_INSTALL_FILE"
 
     if [[ -s "$XARM_DEP_PKGS_FILE" ]]; then
