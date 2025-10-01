@@ -1,32 +1,27 @@
-if [ -z "$ROS2_WS" ]; then
-    if [ -n "$BASH_VERSION" ]; then
-        export ROS2_WS="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1; pwd -P)"
-        shell="bash"
-    elif [ -n "$ZSH_VERSION" ]; then
-        export ROS2_WS="$(cd -- "$(dirname "${(%):-%x}")" > /dev/null 2>&1; pwd -P)"
-        shell="zsh"
-    else
-    echo "Unsupported shell"
-    fi
-    echo "ros2_ws: $ROS2_WS"
+if [[ -z "$ROS2_SETUP" ]]; then
+    echo "ROS2 is not sourced. Please source ros2_setup.sh first"
+    return 1
 fi
 
-. "$ROS2_WS/nav2_setup.sh"
-
-TURTLEBOT4_DESKTOP_WS_SETUP="$ROS2_WS/turtlebot4_desktop"
-if [[ -f "$TURTLEBOT4_DESKTOP_WS_SETUP/install/local_setup.$shell" ]]; then
-    echo "turtlebot4_desktop ($shell)"
-    . "$TURTLEBOT4_DESKTOP_WS_SETUP/install/local_setup.$shell"
+if [[ -z "$NAV2_SETUP" ]]; then
+    echo "Nav2 is not sourced. Please source nav2_setup.sh first"
+    return 1
 fi
 
-TURTLEBOT4_ROBOT_WS_SETUP="$ROS2_WS/turtlebot4_robot"
-if [[ -f "$TURTLEBOT4_ROBOT_WS_SETUP/install/local_setup.$shell" ]]; then
-    echo "turtlebot4_robot ($shell)"
-    . "$TURTLEBOT4_ROBOT_WS_SETUP/install/local_setup.$shell"
+TB4_DESKTOP_SETUP="$ROS2_WS/turtlebot4_desktop/install/local_setup.$ROS2_SHELL"
+if [[ -f "$TB4_DESKTOP_SETUP" ]]; then
+    echo "turtlebot4_desktop ($ROS2_SHELL)"
+    . "$TB4_DESKTOP_SETUP"
+fi
+
+TB4_ROBOT_SETUP="$ROS2_WS/turtlebot4_robot/install/local_setup.$ROS2_SHELL"
+if [[ -f "$TB4_ROBOT_SETUP" ]]; then
+    echo "turtlebot4_robot ($ROS2_SHELL)"
+    . "$TB4_ROBOT_SETUP"
 
     ROBOT_SETUP="/etc/turtlebot4/setup.bash"
     if [[ -f "$ROBOT_SETUP" ]]; then
-        echo "turtlebot4_setup ($shell)"
+        echo "turtlebot4_setup ($ROS2_SHELL)"
         export ROBOT_SETUP
     fi
 fi
