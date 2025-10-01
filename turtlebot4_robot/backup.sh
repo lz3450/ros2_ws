@@ -9,4 +9,4 @@ umask 0022
 
 ################################################################################
 
-tar --zstd -vcf tb4_robot_backup.tar.zst build install src log
+tar --zstd -vcf tb4_robot_backup.tar.zst build install src
