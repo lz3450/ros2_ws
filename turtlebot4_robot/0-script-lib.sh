@@ -20,7 +20,7 @@ update_tb4_dep_pkgs() {
         --reinstall \
         --from-paths src \
         --ignore-src \
-        --skip-keys="fastcdr" \
+        --skip-keys="teleop_twist_joy joy_linux" \
         -s | awk '{print $5}' | sed -E -e '/^\s*$/d' -e "s/'$//g" | LC_ALL=C sort -n > "$TB4_DEP_PKGS_FILE"
 
     sed -i \

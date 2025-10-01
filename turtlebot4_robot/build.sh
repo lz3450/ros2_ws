@@ -12,11 +12,11 @@ umask 0022
 . ../ros2_setup.sh
 . ../nav2_setup.sh
 
-export MAKEFLAGS="-j $(nproc)"
+export MAKEFLAGS="-j $(($(nproc) / 2))"
 
 COMMON_OPTIONS=(
     --symlink-install
-    --parallel-workers $(nproc)
+    --parallel-workers "$(($(nproc) / 2))"
     --continue-on-error
     --packages-skip-build-finished
     --cmake-args
