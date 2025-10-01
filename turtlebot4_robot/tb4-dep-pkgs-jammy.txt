@@ -7,6 +7,7 @@ libqt5core5a
 libqt5gui5
 libqt5opengl5
 libqt5widgets5
+libsdl2-dev
 libtheora-dev
 libusb-1.0-0-dev
 nlohmann-json3-dev
