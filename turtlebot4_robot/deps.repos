@@ -14,11 +14,11 @@ repositories:
   depthai-ros:
     type: git
     url: https://github.com/luxonis/depthai-ros.git
-    version: humble
+    version: v2.11.2-humble
   depthai-core:
     type: git
     url: https://github.com/luxonis/depthai-core.git
-    version: ros-v2.23.0
+    version: ros-v2.30.0
   create3_sim:
     type: git
     url: https://github.com/iRobotEducation/create3_sim.git
@@ -82,7 +82,7 @@ repositories:
   ros2_controllers:
     type: git
     url: https://github.com/ros-controls/ros2_controllers.git
-    version: humble
+    version: 2.49.1
   ros2_control:
     type: git
     url: https://github.com/ros-controls/ros2_control.git
@@ -110,7 +110,7 @@ repositories:
   control_toolbox:
     type: git
     url: https://github.com/ros-controls/control_toolbox.git
-    version: ros2-master
+    version: humble
   generate_parameter_library:
     type: git
     url: https://github.com/PickNikRobotics/generate_parameter_library.git
