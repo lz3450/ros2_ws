@@ -14,3 +14,5 @@ umask 0022
 get_nav2_src
 
 rm -rf src/navigation2/nav2_system_tests
+
+echo "Successfully updated Nav2 source code and applied patches"

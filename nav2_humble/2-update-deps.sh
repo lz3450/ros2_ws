@@ -12,3 +12,5 @@ umask 0022
 . ./0-script-lib.sh
 
 update_nav2_dep_pkgs
+
+echo "Successfully updated Nav2 dependencies"
