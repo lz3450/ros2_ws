@@ -20,9 +20,19 @@ update_tb4_dep_pkgs() {
         --reinstall \
         --from-paths src \
         --ignore-src \
+        --skip-keys="fastcdr" \
         -s | awk '{print $5}' | sed -E -e '/^\s*$/d' -e "s/'$//g" | LC_ALL=C sort -n > "$TB4_DEP_PKGS_FILE"
 
     sed -i \
+        -e '/^.*clang.*$/d' \
+        -e '/^cmake$/d' \
+        -e '/^curl$/d' \
+        -e '/^doxygen$/d' \
+        -e '/^git$/d' \
+        -e '/^libboost-/ {/libboost-all-dev/!d}' \
+        -e '/^libcurl/d' \
+        -e '/^network-manager/d' \
+        -e '/^pkg-config$/d' \
         -e "s/'$//g" \
         "$TB4_DEP_PKGS_FILE"
 }

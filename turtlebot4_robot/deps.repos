@@ -123,3 +123,23 @@ repositories:
     type: git
     url: https://github.com/PickNikRobotics/cpp_polyfills.git
     version: main
+  create3_examples:
+    type: git
+    url: https://github.com/iRobotEducation/create3_examples.git
+    version: humble
+  ffmpeg_image_transport_msgs:
+    type: git
+    url: https://github.com/ros-misc-utilities/ffmpeg_image_transport_msgs.git
+    version: humble
+  ros2_control_cmake:
+    type: git
+    url: https://github.com/ros-controls/ros2_control_cmake.git
+    version: 0.2.1
+  rosx_introspection:
+    type: git
+    url: https://github.com/facontidavide/rosx_introspection.git
+    version: 1.0.2
+  teleop_twist_keyboard:
+    type: git
+    url: https://github.com/ros2/teleop_twist_keyboard.git
+    version: 2.4.1
