@@ -11,6 +11,10 @@ repositories:
     type: git
     url: https://github.com/turtlebot/turtlebot4_setup.git
     version: humble
+  create3_examples:
+    type: git
+    url: https://github.com/iRobotEducation/create3_examples.git
+    version: humble
   depthai-ros:
     type: git
     url: https://github.com/luxonis/depthai-ros.git
@@ -19,127 +23,63 @@ repositories:
     type: git
     url: https://github.com/luxonis/depthai-core.git
     version: ros-v2.30.0
-  create3_sim:
-    type: git
-    url: https://github.com/iRobotEducation/create3_sim.git
-    version: humble
-  vision_msgs:
-    type: git
-    url: https://github.com/ros-perception/vision_msgs.git
-    version: humble
-  irobot_create_msgs:
-    type: git
-    url: https://github.com/iRobotEducation/irobot_create_msgs.git
-    version: humble
-  simple_term_menu_vendor:
-    type: git
-    url: https://github.com/clearpathrobotics/simple-term-menu.git
-    version: humble
-  robot_upstart:
-    type: git
-    url: https://github.com/clearpathrobotics/robot_upstart.git
-    version: foxy-devel
-  joystick_drivers:
-    type: git
-    url: https://github.com/ros-drivers/joystick_drivers.git
-    version: ros2
-  teleop_twist_joy:
-    type: git
-    url: https://github.com/ros2/teleop_twist_joy.git
-    version: humble
-  rplidar_ros:
-    type: git
-    url: https://github.com/Slamtec/rplidar_ros.git
-    version: ros2
   image_pipeline:
     type: git
     url: https://github.com/ros-perception/image_pipeline.git
-    version: humble
-  image_transport_plugins:
-    type: git
-    url: https://github.com/ros-perception/image_transport_plugins.git
-    version: humble
-  joint_state_publisher:
-    type: git
-    url: https://github.com/ros/joint_state_publisher.git
-    version: ros2
-  xacro:
-    type: git
-    url: https://github.com/ros/xacro.git
-    version: ros2
-  imu_tools:
-    type: git
-    url: https://github.com/CCNYRoboticsLab/imu_tools.git
-    version: humble
-  schemas:
-    type: git
-    url: https://github.com/foxglove/schemas.git
-    version: main
-  control_msgs:
-    type: git
-    url: https://github.com/ros-controls/control_msgs.git
-    version: humble
-  ros2_controllers:
-    type: git
-    url: https://github.com/ros-controls/ros2_controllers.git
-    version: 2.49.1
-  ros2_control:
-    type: git
-    url: https://github.com/ros-controls/ros2_control.git
-    version: humble
-  RSL:
-    type: git
-    url: https://github.com/PickNikRobotics/RSL.git
-    version: main
-  backward_ros:
-    type: git
-    url: https://github.com/pal-robotics/backward_ros.git
-    version: foxy-devel
-  ackermann_msgs:
-    type: git
-    url: https://github.com/ros-drivers/ackermann_msgs.git
-    version: ros2
-  filters:
-    type: git
-    url: https://github.com/ros/filters.git
-    version: ros2
-  realtime_tools:
-    type: git
-    url: https://github.com/ros-controls/realtime_tools.git
-    version: humble
-  control_toolbox:
-    type: git
-    url: https://github.com/ros-controls/control_toolbox.git
-    version: humble
-  generate_parameter_library:
-    type: git
-    url: https://github.com/PickNikRobotics/generate_parameter_library.git
-    version: main
-  kinematics_interface:
-    type: git
-    url: https://github.com/ros-controls/kinematics_interface.git
-    version: humble
-  cpp_polyfills:
-    type: git
-    url: https://github.com/PickNikRobotics/cpp_polyfills.git
-    version: main
-  create3_examples:
-    type: git
-    url: https://github.com/iRobotEducation/create3_examples.git
     version: humble
   ffmpeg_image_transport_msgs:
     type: git
     url: https://github.com/ros-misc-utilities/ffmpeg_image_transport_msgs.git
     version: humble
-  ros2_control_cmake:
+  foxglove-sdk:
     type: git
-    url: https://github.com/ros-controls/ros2_control_cmake.git
-    version: 0.2.1
-  rosx_introspection:
+    url: https://github.com/foxglove/foxglove-sdk.git
+    version: ros-v3.2.1
+  image_transport_plugins:
     type: git
-    url: https://github.com/facontidavide/rosx_introspection.git
-    version: 1.0.2
-  teleop_twist_keyboard:
+    url: https://github.com/ros-perception/image_transport_plugins.git
+    version: humble
+  create3_sim:
     type: git
-    url: https://github.com/ros2/teleop_twist_keyboard.git
-    version: 2.4.1
+    url: https://github.com/iRobotEducation/create3_sim.git
+    version: humble
+  irobot_create_msgs:
+    type: git
+    url: https://github.com/iRobotEducation/irobot_create_msgs.git
+    version: humble
+  joint_state_publisher:
+    type: git
+    url: https://github.com/ros/joint_state_publisher.git
+    version: ros2
+  robot_upstart:
+    type: git
+    url: https://github.com/clearpathrobotics/robot_upstart.git
+    version: 1.0.4
+  rplidar_ros:
+    type: git
+    url: https://github.com/Slamtec/rplidar_ros.git
+    version: ros2
+  imu_tools:
+    type: git
+    url: https://github.com/CCNYRoboticsLab/imu_tools.git
+    version: humble
+  simple-term-menu:
+    type: git
+    url: https://github.com/clearpathrobotics/simple-term-menu.git
+    version: humble
+  vision_msgs:
+    type: git
+    url: https://github.com/ros-perception/vision_msgs.git
+    version: humble
+  xacro:
+    type: git
+    url: https://github.com/ros/xacro.git
+    version: ros2
+  # joystick_drivers:
+  #   type: git
+  #   url: https://github.com/ros-drivers/joystick_drivers.git
+  #   version: ros2
+  # teleop_twist_joy:
+  #   type: git
+  #   url: https://github.com/ros2/teleop_twist_joy.git
+  #   version: humble
