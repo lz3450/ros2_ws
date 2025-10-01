@@ -21,6 +21,7 @@
         "DISTRO",
         "DOMPL",
         "eigen",
+        "fastcdr",
         "fastrtps",
         "irobot",
         "isystem",
