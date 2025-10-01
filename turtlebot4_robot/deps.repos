@@ -26,7 +26,7 @@ repositories:
   vision_msgs:
     type: git
     url: https://github.com/ros-perception/vision_msgs.git
-    version: ros2
+    version: humble
   irobot_create_msgs:
     type: git
     url: https://github.com/iRobotEducation/irobot_create_msgs.git
@@ -106,7 +106,7 @@ repositories:
   realtime_tools:
     type: git
     url: https://github.com/ros-controls/realtime_tools.git
-    version: master
+    version: humble
   control_toolbox:
     type: git
     url: https://github.com/ros-controls/control_toolbox.git
