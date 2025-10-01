@@ -159,6 +159,7 @@ liblz4-dev
 libmd-dev
 libmetis5
 libmongoose2
+libnanoflann-dev
 libnl-3-dev
 libnl-route-3-dev
 libnorm-dev
