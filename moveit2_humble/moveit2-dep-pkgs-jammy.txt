@@ -1,15 +1,11 @@
 curl
 freeglut3-dev
 libassimp-dev
-libbluetooth-dev
-libbluetooth3
 libboost-all-dev
 libbullet-dev
 libcap-dev
 libconsole-bridge-dev
 libcurl4-openssl-dev
-libcwiid-dev
-libcwiid1
 libdw-dev
 libeigen3-dev
 libfcl-dev
@@ -33,10 +29,8 @@ libqt5opengl5-dev
 libqt5widgets5
 librange-v3-dev
 libsdl2-dev
-libspnav-dev
 libssl-dev
 liburdfdom-headers-dev
-libx11-dev
 lm-sensors
 python3-coverage
 python3-dev
@@ -49,9 +43,7 @@ python3-packaging
 python3-psutil
 python3-pygraphviz
 python3-pytest
-python3-rospkg
 python3-setuptools
 python3-typeguard
 python3-yaml
 qtbase5-dev
-spacenavd
