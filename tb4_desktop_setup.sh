@@ -13,9 +13,3 @@ if [[ -f "$TB4_DESKTOP_SETUP" ]]; then
     echo "turtlebot4_desktop ($ROS2_SHELL)"
     . "$TB4_DESKTOP_SETUP"
 fi
-
-TB4_ROBOT_SETUP="$ROS2_WS/turtlebot4_robot/install/local_setup.$ROS2_SHELL"
-if [[ -f "$TB4_ROBOT_SETUP" ]]; then
-    echo "turtlebot4_robot ($ROS2_SHELL)"
-    . "$TB4_ROBOT_SETUP"
-fi
