@@ -9,19 +9,21 @@ umask 0022
 
 ################################################################################
 
+. ../ros2_setup.sh
 . ../nav2_setup.sh
 
 export MAKEFLAGS="-j $(nproc)"
 
 COMMON_OPTIONS=(
     --symlink-install
-    --parallel-workers $(nproc)
-    # --continue-on-error
-    # --packages-skip-build-finished
+    --parallel-workers 2
+    --continue-on-error
+    --packages-skip-build-finished
     --cmake-args
     -Wno-dev
     "-DCMAKE_BUILD_TYPE=Release"
     # "-DBUILD_TESTING=OFF"
 )
 
-colcon build "${COMMON_OPTIONS[@]}"
+colcon build \
+    "${COMMON_OPTIONS[@]}"
