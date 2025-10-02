@@ -1,6 +1,7 @@
 #!/bin/bash
 
 . /etc/os-release
+. ../ros2_setup.sh
 . ../nav2_setup.sh
 
 TB4_DESKTOP_DEP_PKGS_FILE="tb4-desktop-dep-pkgs-$UBUNTU_CODENAME.txt"
