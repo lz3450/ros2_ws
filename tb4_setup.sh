@@ -18,10 +18,4 @@ TB4_ROBOT_SETUP="$ROS2_WS/turtlebot4_robot/install/local_setup.$ROS2_SHELL"
 if [[ -f "$TB4_ROBOT_SETUP" ]]; then
     echo "turtlebot4_robot ($ROS2_SHELL)"
     . "$TB4_ROBOT_SETUP"
-
-    ROBOT_SETUP="/etc/turtlebot4/setup.bash"
-    if [[ -f "$ROBOT_SETUP" ]]; then
-        echo "turtlebot4_setup ($ROS2_SHELL)"
-        export ROBOT_SETUP
-    fi
 fi
