@@ -14,8 +14,8 @@ export MAKEFLAGS="-j $(nproc)"
 COMMON_OPTIONS=(
     --symlink-install
     --parallel-workers $(nproc)
-    # --continue-on-error
-    # --packages-skip-build-finished
+    --continue-on-error
+    --packages-skip-build-finished
     --cmake-args
     -Wno-dev
     "-DCMAKE_BUILD_TYPE=Release"
