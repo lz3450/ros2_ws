@@ -15,11 +15,11 @@ export RMW_IMPLEMENTATION="rmw_fastrtps_cpp"
 # export RMW_IMPLEMENTATION="rmw_cyclonedds_cpp"
 echo "RMW_IMPLEMENTATION=$RMW_IMPLEMENTATION"
 
-ROS2_SETUP="$ROS2_WS/ros2_humble/install/local_setup.$ROS2_SHELL"
+ROS2_SETUP="$ROS2_WS/install/local_setup.$ROS2_SHELL"
 if [[ -f "$ROS2_SETUP" ]]; then
-    echo "ros2_humble ($ROS2_SHELL)"
+    echo "ros2 ($ROS2_SHELL)"
     . "$ROS2_SETUP"
 else
-    echo "failed to set up ros2_humble"
+    echo "failed to set up ros2"
     return 1
 fi
