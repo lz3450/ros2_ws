@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
-# ros2/lib.sh
+# lib.sh
 #
 
 if [[ -z "$ROS_DISTRO" ]]; then
@@ -10,9 +10,10 @@ fi
 
 . /etc/os-release
 
-ROS2_DEV_TOOLS_DEP_PKGS_FILE="ros2-dev-tools-dep-pkgs-$UBUNTU_CODENAME.txt"
-ROS2_DEP_PKGS_FILE="ros2-dep-pkgs-$UBUNTU_CODENAME.txt"
-ROS2_DEP_PKGS_TO_INSTALL_FILE="ros2-dep-pkgs-to-install-$UBUNTU_CODENAME.txt"
+PKGLISTS_DIR="scripts/pkglists"
+ROS2_DEV_TOOLS_DEP_PKGS_FILE="$PKGLISTS_DIR/ros2-dev-tools-dep-pkgs-$UBUNTU_CODENAME.txt"
+ROS2_DEP_PKGS_FILE="$PKGLISTS_DIR/ros2-dep-pkgs-$UBUNTU_CODENAME.txt"
+ROS2_DEP_PKGS_TO_INSTALL_FILE="$PKGLISTS_DIR/ros2-dep-pkgs-to-install-$UBUNTU_CODENAME.txt"
 
 setup_ros2_repo() {
     ### ROS2 building environment setup
@@ -24,18 +25,21 @@ setup_ros2_repo() {
 }
 
 update_ros2_dev_tools_dep_pkgs() {
+    if [[ ! -d "$PKGLISTS_DIR" ]]; then
+        mkdir -p "$PKGLISTS_DIR"
+    fi
+
     sudo apt-get update
     sudo apt-get install --no-install-recommends -s \
         python3-flake8-docstrings \
         python3-pip \
         python3-pytest-cov \
         ros-dev-tools \
-        | grep "^Inst" | awk '{print $2}' | LC_ALL=C sort -n \
+        | (grep "^Inst" || :) | awk '{print $2}' | LC_ALL=C sort -n \
         > "$ROS2_DEV_TOOLS_DEP_PKGS_FILE"
 }
 
 install_ros2_dev_tools_dep_pkgs() {
-    sudo apt-get update
     sudo apt-get install --no-install-recommends \
         python3-flake8-docstrings \
         python3-pip \
@@ -43,19 +47,20 @@ install_ros2_dev_tools_dep_pkgs() {
         ros-dev-tools
 }
 
-get_ros2_src() {
-    local _repos="https://raw.githubusercontent.com/ros2/ros2/$ROS_DISTRO/ros2.repos"
-    if [[ -n "$1" ]]; then
-        _repos="$1"
+get_src() {
+    if [[ -z "$1" ]]; then
+        echo "No repos file specified"
+        return 1
     fi
+    local -r _repos="$1"
 
     if [[ ! -d "src" ]]; then
         mkdir -p src
-        vcs import --force --shallow --recursive --input "$_repos" src
     fi
+    vcs import --force --shallow --recursive --input "$_repos" src
 }
 
-update_ros2_dep_pkgs() {
+update_dep_pkgs() {
     if [[ ! -f "/etc/ros/rosdep/sources.list.d/20-default.list" ]]; then
         sudo -E rosdep init
     fi
@@ -76,13 +81,15 @@ update_ros2_dep_pkgs() {
         -e '/^doxygen$/d' \
         -e '/^file$/d' \
         -e '/^git$/d' \
+        -e '/^libboost-/ {/libboost-all-dev/!d}' \
+        -e '/^libcurl/d' \
         -e '/^openssl$/d' \
         -e '/^pkg-config$/d' \
         -e "s/'$//g" \
         "$ROS2_DEP_PKGS_FILE"
 }
 
-install_ros2_dep_pkgs() {
+install_dep_pkgs() {
     xargs -a "$ROS2_DEP_PKGS_FILE" sudo apt-get install --no-install-recommends -s \
         | (grep "^Inst" || :) | awk '{print $2}' | LC_ALL=C sort -n \
         > "$ROS2_DEP_PKGS_TO_INSTALL_FILE"
