@@ -1,3 +1,0 @@
-python3-packaging
-python3-pytest
-python3-rospkg-modules

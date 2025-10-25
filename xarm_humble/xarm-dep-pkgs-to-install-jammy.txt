@@ -1,7 +1,0 @@
-python3-certifi
-python3-chardet
-python3-idna
-python3-requests
-python3-semver
-python3-transforms3d
-python3-urllib3
