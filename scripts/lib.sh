@@ -12,8 +12,8 @@ fi
 
 PKGLISTS_DIR="scripts/pkglists"
 ROS2_DEV_TOOLS_DEP_PKGS_FILE="$PKGLISTS_DIR/ros2-dev-tools-dep-pkgs-$UBUNTU_CODENAME.txt"
-ROS2_DEP_PKGS_FILE="$PKGLISTS_DIR/ros2-dep-pkgs-$UBUNTU_CODENAME.txt"
-ROS2_DEP_PKGS_TO_INSTALL_FILE="$PKGLISTS_DIR/ros2-dep-pkgs-to-install-$UBUNTU_CODENAME.txt"
+ROS2_DEP_PKGS_FILE="$PKGLISTS_DIR/$ROS_DISTRO-dep-pkgs-$UBUNTU_CODENAME.txt"
+ROS2_DEP_PKGS_TO_INSTALL_FILE="$PKGLISTS_DIR/$ROS_DISTRO-dep-pkgs-to-install-$UBUNTU_CODENAME.txt"
 
 setup_ros2_repo() {
     ### ROS2 building environment setup
@@ -71,9 +71,7 @@ update_dep_pkgs() {
         --from-paths src \
         --ignore-src \
         --skip-keys="fastcdr rti-connext-dds-6.0.1 urdfdom_headers" \
-        -s | awk '{print $5}' | sed -E -e '/^\s*$/d' -e "/'$/s/'//" | LC_ALL=C sort -n > "$ROS2_DEP_PKGS_FILE"
-
-    sed -i \
+        -s | awk '{print $5}' | sed -E -e '/^\s*$/d' -e "/'$/s/'//" | LC_ALL=C sort -n | sed -E \
         -e '/^.*clang.*$/d' \
         -e '/^cmake$/d' \
         -e '/^cppcheck$/d' \
@@ -82,11 +80,9 @@ update_dep_pkgs() {
         -e '/^file$/d' \
         -e '/^git$/d' \
         -e '/^libboost-/ {/libboost-all-dev/!d}' \
-        -e '/^libcurl/d' \
         -e '/^openssl$/d' \
         -e '/^pkg-config$/d' \
-        -e "s/'$//g" \
-        "$ROS2_DEP_PKGS_FILE"
+        -e "s/'$//g" > "$ROS2_DEP_PKGS_FILE"
 }
 
 install_dep_pkgs() {

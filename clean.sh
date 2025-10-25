@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#
+# clean.sh
+#
 
 set -e
 set -o pipefail
@@ -9,9 +12,4 @@ umask 0022
 
 ################################################################################
 
-ROS_DISTRO=humble
-. ../ros2/lib.sh
-
-install_ros2_dep_pkgs
-
-echo "Successfully installed ROS 2 $ROS_DISTRO dependencies"
+rm -rf build install log

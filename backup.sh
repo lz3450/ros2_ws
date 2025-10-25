@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#
+# backup.sh
+#
 
 set -e
 set -o pipefail
@@ -9,5 +12,4 @@ umask 0022
 
 ################################################################################
 
-rm -rf build install log src
-sudo rm -rf build-opt log-opt
+tar --zstd -vcf ros2_humble_backup.tar.zst build install src log

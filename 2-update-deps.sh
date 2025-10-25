@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#
+# update-deps.sh
+#
 
 set -e
 set -o pipefail
@@ -10,8 +13,8 @@ umask 0022
 ################################################################################
 
 ROS_DISTRO=humble
-. ../ros2/lib.sh
+. scripts/lib.sh
 
-update_ros2_dep_pkgs
+update_dep_pkgs
 
-echo "Successfully updated ROS 2 $ROS_DISTRO dependencies"
+echo "Successfully updated dependency package list"
