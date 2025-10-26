@@ -10,7 +10,7 @@ fi
 
 . /etc/os-release
 
-PKGLISTS_DIR="scripts/pkglists"
+PKGLISTS_DIR="pkglists"
 ROS2_DEV_TOOLS_DEP_PKGS_FILE="$PKGLISTS_DIR/ros2-dev-tools-dep-pkgs-$UBUNTU_CODENAME.txt"
 ROS2_DEP_PKGS_FILE="$PKGLISTS_DIR/$ROS_DISTRO-dep-pkgs-$UBUNTU_CODENAME.txt"
 ROS2_DEP_PKGS_TO_INSTALL_FILE="$PKGLISTS_DIR/$ROS_DISTRO-dep-pkgs-to-install-$UBUNTU_CODENAME.txt"
@@ -52,15 +52,20 @@ get_src() {
         echo "No repos file specified"
         return 1
     fi
-    local -r _repos="$1"
-
-    if [[ ! -d "src" ]]; then
-        mkdir -p src
+    if [[ ! -z "$2" ]]; then
+        echo "source directory does not specified"
+        return 1
     fi
-    vcs import --force --shallow --recursive --input "$_repos" src
+    local -r _repos="$1"
+    local -r _src_dir="$2"
+
+    if [[ ! -d "$_src_dir" ]]; then
+        mkdir -p "$_src_dir"
+    fi
+    vcs import --force --shallow --recursive --input "$_repos" "$_src_dir"
 }
 
-update_dep_pkgs() {
+get_dep_pkgs() {
     if [[ ! -f "/etc/ros/rosdep/sources.list.d/20-default.list" ]]; then
         sudo -E rosdep init
     fi
@@ -82,16 +87,23 @@ update_dep_pkgs() {
         -e '/^libboost-/ {/libboost-all-dev/!d}' \
         -e '/^openssl$/d' \
         -e '/^pkg-config$/d' \
-        -e "s/'$//g" > "$ROS2_DEP_PKGS_FILE"
+        -e "s/'$//g"
 }
 
 install_dep_pkgs() {
-    xargs -a "$ROS2_DEP_PKGS_FILE" sudo apt-get install --no-install-recommends -s \
+    if [[ ! -f "$1" ]]; then
+        echo "Dependency packages file not found: $1"
+        return 1
+    fi
+    local -r _dep_pkgs_file="$1"
+    local -r _dep_pkgs_to_install_file="${_dep_pkgs_file%.txt}-to-install.txt"
+
+    xargs -a "$_dep_pkgs_file" sudo apt-get install --no-install-recommends -s \
         | (grep "^Inst" || :) | awk '{print $2}' | LC_ALL=C sort -n \
-        > "$ROS2_DEP_PKGS_TO_INSTALL_FILE"
+        > "$_dep_pkgs_to_install_file"
 
     if [[ -s "$ROS2_DEP_PKGS_FILE" ]]; then
-        xargs -a "$ROS2_DEP_PKGS_FILE" sudo apt-get install --no-install-recommends
+        xargs -a "$_dep_pkgs_file" sudo apt-get install --no-install-recommends
     fi
 }
 

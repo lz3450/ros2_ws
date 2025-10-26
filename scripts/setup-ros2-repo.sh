@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#
+# setup-ros2-repo.sh
+#
 
 set -e
 set -o pipefail
@@ -10,7 +13,7 @@ umask 0022
 ################################################################################
 
 ROS_DISTRO=humble
-. scripts/lib.sh
+. lib.sh
 
 setup_ros2_repo
 
