@@ -10,10 +10,11 @@ fi
 
 . /etc/os-release
 
+export ROS2_WS="$(realpath "$(dirname "${BASH_SOURCE[0]}")/..")"
+echo "ROS2_WS: $ROS2_WS"
+
 PKGLISTS_DIR="pkglists"
 ROS2_DEV_TOOLS_DEP_PKGS_FILE="$PKGLISTS_DIR/ros2-dev-tools-dep-pkgs-$UBUNTU_CODENAME.txt"
-ROS2_DEP_PKGS_FILE="$PKGLISTS_DIR/$ROS_DISTRO-dep-pkgs-$UBUNTU_CODENAME.txt"
-ROS2_DEP_PKGS_TO_INSTALL_FILE="$PKGLISTS_DIR/$ROS_DISTRO-dep-pkgs-to-install-$UBUNTU_CODENAME.txt"
 
 setup_ros2_repo() {
     ### ROS2 building environment setup
@@ -52,7 +53,7 @@ get_src() {
         echo "No repos file specified"
         return 1
     fi
-    if [[ ! -z "$2" ]]; then
+    if [[ -z "$2" ]]; then
         echo "source directory does not specified"
         return 1
     fi
@@ -66,6 +67,17 @@ get_src() {
 }
 
 get_dep_pkgs() {
+    if [[ -z "$1" ]]; then
+        echo "dependency package list file not specified"
+        return 1
+    fi
+    if [[ -z "$2" ]]; then
+        echo "source directory does not specified"
+        return 1
+    fi
+    local -r _dep_pkgs_file="$1"
+    local -r _src_dir="$2"
+
     if [[ ! -f "/etc/ros/rosdep/sources.list.d/20-default.list" ]]; then
         sudo -E rosdep init
     fi
@@ -73,7 +85,7 @@ get_dep_pkgs() {
     rosdep install \
         --rosdistro=$ROS_DISTRO \
         --reinstall \
-        --from-paths src \
+        --from-paths "$_src_dir" \
         --ignore-src \
         --skip-keys="fastcdr rti-connext-dds-6.0.1 urdfdom_headers" \
         -s | awk '{print $5}' | sed -E -e '/^\s*$/d' -e "/'$/s/'//" | LC_ALL=C sort -n | sed -E \
@@ -87,7 +99,7 @@ get_dep_pkgs() {
         -e '/^libboost-/ {/libboost-all-dev/!d}' \
         -e '/^openssl$/d' \
         -e '/^pkg-config$/d' \
-        -e "s/'$//g"
+        -e "s/'$//g" > "$_dep_pkgs_file"
 }
 
 install_dep_pkgs() {
@@ -102,7 +114,7 @@ install_dep_pkgs() {
         | (grep "^Inst" || :) | awk '{print $2}' | LC_ALL=C sort -n \
         > "$_dep_pkgs_to_install_file"
 
-    if [[ -s "$ROS2_DEP_PKGS_FILE" ]]; then
+    if [[ -s "$_dep_pkgs_file" ]]; then
         xargs -a "$_dep_pkgs_file" sudo apt-get install --no-install-recommends
     fi
 }

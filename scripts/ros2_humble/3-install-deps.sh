@@ -13,8 +13,8 @@ umask 0022
 ################################################################################
 
 ROS_DISTRO=humble
-. scripts/lib.sh
+. ../lib.sh
 
-install_dep_pkgs
+install_dep_pkgs dep-pkgs.txt
 
 echo "Successfully installed dependency packages"

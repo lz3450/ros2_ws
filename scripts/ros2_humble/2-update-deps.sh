@@ -13,8 +13,8 @@ umask 0022
 ################################################################################
 
 ROS_DISTRO=humble
-. scripts/lib.sh
+. ../lib.sh
 
-update_dep_pkgs
+get_dep_pkgs dep-pkgs.txt "$ROS2_WS/src/ros2_humble"
 
 echo "Successfully updated dependency package list"
