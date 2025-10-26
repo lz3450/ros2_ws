@@ -13,8 +13,7 @@ fi
 export ROS2_WS="$(realpath "$(dirname "${BASH_SOURCE[0]}")/..")"
 echo "ROS2_WS: $ROS2_WS"
 
-PKGLISTS_DIR="pkglists"
-ROS2_DEV_TOOLS_DEP_PKGS_FILE="$PKGLISTS_DIR/ros2-dev-tools-dep-pkgs-$UBUNTU_CODENAME.txt"
+ROS2_DEV_TOOLS_DEP_PKGS_FILE="ros2-dev-tools-dep-pkgs-$UBUNTU_CODENAME.txt"
 
 setup_ros2_repo() {
     ### ROS2 building environment setup
@@ -26,10 +25,6 @@ setup_ros2_repo() {
 }
 
 update_ros2_dev_tools_dep_pkgs() {
-    if [[ ! -d "$PKGLISTS_DIR" ]]; then
-        mkdir -p "$PKGLISTS_DIR"
-    fi
-
     sudo apt-get update
     sudo apt-get install --no-install-recommends -s \
         python3-flake8-docstrings \
