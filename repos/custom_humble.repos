@@ -141,3 +141,37 @@ repositories:
     type: git
     url: https://github.com/SteveMacenski/slam_toolbox.git
     version: humble
+  ### turtlebot4
+  turtlebot4:
+    type: git
+    url: https://github.com/turtlebot/turtlebot4.git
+    version: humble
+  turtlebot4_desktop:
+    type: git
+    url: https://github.com/turtlebot/turtlebot4_desktop.git
+    version: humble
+  create3_sim:
+    type: git
+    url: https://github.com/iRobotEducation/create3_sim.git
+    version: humble
+  irobot_create_msgs:
+    type: git
+    url: https://github.com/iRobotEducation/irobot_create_msgs.git
+    version: humble
+  rqt_robot_monitor:
+      type: git
+      url: https://github.com/ros-visualization/rqt_robot_monitor.git
+      version: humble
+  teleop_twist_keyboard:
+    type: git
+    url: https://github.com/ros2/teleop_twist_keyboard.git
+    version: ed06da483e4acef8d0ab225557d64e6597c9bdf2
+  ### xarm_ros2
+  xarm_ros2:
+    type: git
+    url: https://github.com/xArm-Developer/xarm_ros2.git
+    version: humble
+  tf_transformations:
+    type: git
+    url: https://github.com/DLu/tf_transformations.git
+    version: main

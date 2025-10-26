@@ -619,6 +619,7 @@ python3-sip-dev
 python3-sympy
 python3-tk
 python3-tomli
+python3-transforms3d
 python3-typed-ast
 python3-typeguard
 python3-typing-extensions

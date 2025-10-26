@@ -114,8 +114,10 @@ python3-pytest-mock
 python3-pytest-timeout
 python3-rosdistro-modules
 python3-rospkg
+python3-rospkg-modules
 python3-setuptools
 python3-sip-dev
+python3-transforms3d
 python3-typeguard
 python3-vcstool
 python3-yaml

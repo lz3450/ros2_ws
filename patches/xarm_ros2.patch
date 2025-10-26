@@ -1,0 +1,117 @@
+diff --git a/xarm_moveit_config/package.xml b/xarm_moveit_config/package.xml
+index fe933ba..35e83f3 100644
+--- a/xarm_moveit_config/package.xml
++++ b/xarm_moveit_config/package.xml
+@@ -12,7 +12,6 @@
+   <depend>backward_ros</depend>
+   <depend>xarm_description</depend>
+   <depend>xarm_controller</depend>
+-  <depend>xarm_gazebo</depend>
+ 
+   <exec_depend>rviz2</exec_depend>
+   <exec_depend>xacro</exec_depend>
+diff --git a/xarm_moveit_servo/CMakeLists.txt b/xarm_moveit_servo/CMakeLists.txt
+index 4569ad2..df52b73 100644
+--- a/xarm_moveit_servo/CMakeLists.txt
++++ b/xarm_moveit_servo/CMakeLists.txt
+@@ -29,6 +29,7 @@ find_package(control_msgs REQUIRED)
+ find_package(moveit_msgs REQUIRED)
+ find_package(geometry_msgs REQUIRED)
+ find_package(moveit_ros_planning REQUIRED)
++find_package(Boost REQUIRED random)
+ 
+ if(BUILD_TESTING)
+   find_package(ament_lint_auto REQUIRED)
+diff --git a/xarm_planner/CMakeLists.txt b/xarm_planner/CMakeLists.txt
+index b096728..ba0f574 100644
+--- a/xarm_planner/CMakeLists.txt
++++ b/xarm_planner/CMakeLists.txt
+@@ -14,7 +14,7 @@ endif()
+ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic
+     -Wno-sign-compare
+-    -Wno-unused-parameter 
++    -Wno-unused-parameter
+     -Wno-unused-variable
+   )
+ endif()
+@@ -31,6 +31,7 @@ find_package(std_msgs REQUIRED)
+ find_package(geometry_msgs REQUIRED)
+ find_package(moveit_msgs REQUIRED)
+ find_package(xarm_msgs REQUIRED)
++find_package(Boost REQUIRED random)
+ 
+ set(dependencies "rclcpp" "std_msgs" "geometry_msgs" "moveit_msgs" "xarm_msgs" "moveit")
+ 
+@@ -42,7 +43,7 @@ include_directories(
+ add_library(xarm_planner SHARED
+   src/xarm_planner.cpp
+ )
+-ament_target_dependencies(xarm_planner 
++ament_target_dependencies(xarm_planner
+   moveit_ros_planning_interface
+   ${dependencies}
+ )
+@@ -51,7 +52,7 @@ add_executable(xarm_planner_node src/xarm_planner_node.cpp)
+ ament_target_dependencies(xarm_planner_node
+   ${dependencies}
+ )
+-target_link_libraries(xarm_planner_node 
++target_link_libraries(xarm_planner_node
+   xarm_planner
+   ${ament_LIBRARIES}
+ )
+@@ -60,7 +61,7 @@ add_executable(xarm_gripper_planner_node src/xarm_gripper_planner_node.cpp)
+ ament_target_dependencies(xarm_gripper_planner_node
+   ${dependencies}
+ )
+-target_link_libraries(xarm_gripper_planner_node 
++target_link_libraries(xarm_gripper_planner_node
+   xarm_planner
+   ${ament_LIBRARIES}
+ )
+@@ -69,7 +70,7 @@ add_executable(test_xarm_planner_api_joint test/test_xarm_planner_api_joint.cpp)
+ ament_target_dependencies(test_xarm_planner_api_joint
+   ${dependencies}
+ )
+-target_link_libraries(test_xarm_planner_api_joint 
++target_link_libraries(test_xarm_planner_api_joint
+   xarm_planner
+   ${ament_LIBRARIES}
+ )
+@@ -78,7 +79,7 @@ add_executable(test_dual_xarm_planner_api_joint test/test_dual_xarm_planner_api_
+ ament_target_dependencies(test_dual_xarm_planner_api_joint
+   ${dependencies}
+ )
+-target_link_libraries(test_dual_xarm_planner_api_joint 
++target_link_libraries(test_dual_xarm_planner_api_joint
+   xarm_planner
+   ${ament_LIBRARIES}
+ )
+@@ -87,7 +88,7 @@ add_executable(test_xarm_planner_api_pose test/test_xarm_planner_api_pose.cpp)
+ ament_target_dependencies(test_xarm_planner_api_pose
+   ${dependencies}
+ )
+-target_link_libraries(test_xarm_planner_api_pose 
++target_link_libraries(test_xarm_planner_api_pose
+   xarm_planner
+   ${ament_LIBRARIES}
+ )
+@@ -96,7 +97,7 @@ add_executable(test_xarm_gripper_planner_api_joint test/test_xarm_gripper_planne
+ ament_target_dependencies(test_xarm_gripper_planner_api_joint
+   ${dependencies}
+ )
+-target_link_libraries(test_xarm_gripper_planner_api_joint 
++target_link_libraries(test_xarm_gripper_planner_api_joint
+   xarm_planner
+   ${ament_LIBRARIES}
+ )
+@@ -138,7 +139,7 @@ install(
+ )
+ 
+ install(
+-  TARGETS 
++  TARGETS
+   xarm_planner
+   xarm_planner_node
+   xarm_gripper_planner_node
