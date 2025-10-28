@@ -10,11 +10,14 @@ libatomic1
 libbenchmark-dev
 libboost-all-dev
 libbullet-dev
+libcap-dev
 libceres-dev
 libconsole-bridge-dev
 libcurl4-openssl-dev
+libdw-dev
 libeigen3-dev
 libflann-dev
+libfmt-dev
 libfreetype6
 libfreetype6-dev
 libgl1-mesa-dev
@@ -41,6 +44,7 @@ libqt5opengl5
 libqt5svg5
 libqt5svg5-dev
 libqt5widgets5
+librange-v3-dev
 libsdl2-dev
 libshiboken2-dev
 libspdlog-dev
@@ -73,11 +77,13 @@ python3-argcomplete
 python3-babeltrace
 python3-cairo
 python3-catkin-pkg-modules
+python3-coverage
 python3-cryptography
 python3-dev
 python3-empy
 python3-flake8
 python3-importlib-metadata
+python3-jinja2
 python3-lark
 python3-lttng
 python3-lxml
@@ -110,6 +116,7 @@ python3-rospkg
 python3-semver
 python3-setuptools
 python3-sip-dev
+python3-typeguard
 python3-vcstool
 python3-yaml
 qt5-qmake
