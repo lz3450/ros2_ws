@@ -38,6 +38,8 @@ libomp-dev
 libopencv-dev
 liborocos-kdl-dev
 libpyside2-dev
+libqglviewer-dev-qt5
+libqglviewer2-qt5
 libqhull-dev
 libqt5core5a
 libqt5gui5

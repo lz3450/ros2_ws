@@ -204,6 +204,9 @@ libpcrecpp0v5
 libpgm-dev
 libpmix-dev
 libpulse-dev
+libqglviewer-dev-qt5
+libqglviewer-headers
+libqglviewer2-qt5
 libqhull-dev
 libqhull8.0
 libqhullcpp8.0
