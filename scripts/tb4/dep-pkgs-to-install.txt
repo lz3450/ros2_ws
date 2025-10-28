@@ -111,6 +111,7 @@ libbsd-dev
 libbtf1
 libbz2-dev
 libcamd2
+libcap-dev
 libccd2
 libccolamd2
 libceres-dev
@@ -124,7 +125,9 @@ libde265-dev
 libdecor-0-0
 libdecor-0-dev
 libdrm-dev
+libdw-dev
 libegl1-mesa-dev
+libelf-dev
 libevent-2.1-7
 libevent-dev
 libevent-extra-2.1-7
@@ -198,6 +201,7 @@ libpcrecpp0v5
 libpgm-dev
 libpmix-dev
 libpulse-dev
+librange-v3-dev
 librbio2
 libsdl2-2.0-0
 libsdl2-dev
@@ -241,13 +245,18 @@ mpi-default-dev
 nlohmann-json3-dev
 openmpi-bin
 openmpi-common
+python-babel-localedata
+python3-babel
 python3-certifi
 python3-chardet
 python3-idna
+python3-jinja2
+python3-markupsafe
 python3-ntplib
 python3-opencv
 python3-requests
 python3-semver
+python3-typeguard
 python3-urllib3
 uuid-dev
 xtl-dev
