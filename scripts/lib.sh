@@ -91,7 +91,9 @@ get_dep_pkgs() {
         -e '/^doxygen$/d' \
         -e '/^file$/d' \
         -e '/^git$/d' \
+        -e '/^iwyu$/d' \
         -e '/^jupyter-notebook$/d' \
+        -e '/^lcov$/d' \
         -e '/^libboost-/ {/libboost-all-dev/!d}' \
         -e '/^openssl$/d' \
         -e '/^pkg-config$/d' \
