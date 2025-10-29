@@ -1,0 +1,17 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b17c512..46c9302 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,11 +4,7 @@ project(osqp_vendor)
+ 
+ find_package(ros_environment REQUIRED)
+ 
+-if($ENV{ROS_VERSION} EQUAL 1)
+-  find_package(catkin REQUIRED)
+-elseif($ENV{ROS_VERSION} EQUAL 2)
+-  find_package(ament_cmake REQUIRED)
+-endif()
++find_package(ament_cmake REQUIRED)
+ 
+ macro(build_osqp)
+   set(git_tag "v0.6.2")

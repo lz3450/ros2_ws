@@ -27,11 +27,14 @@ get_src "$srcdir"/moveit2/moveit2.repos "$srcdir"
 
 ###
 rm -rf "$srcdir"/navigation2/nav2_system_tests
+rm -rf "$srcdir"/ros2_kortex
 rm -rf "$srcdir"/xarm_ros2/{xarm_gazebo,xarm_vision}
 rm -rf "$srcdir"/xarm_ros2/thirdparty/realsense_gazebo_plugin
 
 ###
 git -C "$srcdir"/xarm_ros2 apply $(realpath --relative-to="$srcdir/xarm_ros2" patches/xarm_ros2.patch)
+git -C "$srcdir"/moveit2_tutorials apply $(realpath --relative-to="$srcdir/xarm_ros2" patches/moveit2_tutorials.patch)
+git -C "$srcdir"/osqp_vendor apply $(realpath --relative-to="$srcdir/osqp_vendor" patches/osqp_vendor.patch)
 
 ################################################################################
 get_src deps.repos "$srcdir"
