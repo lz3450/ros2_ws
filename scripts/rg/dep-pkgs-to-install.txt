@@ -187,6 +187,8 @@ libnorm-dev
 libnuma-dev
 liboctomap-dev
 liboctomap1.9
+libode-dev
+libode8
 libomp-14-dev
 libomp-dev
 libomp5-14

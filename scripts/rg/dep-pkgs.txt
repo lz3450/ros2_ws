@@ -33,6 +33,7 @@ liblapack-dev
 libnanoflann-dev
 libncurses-dev
 liboctomap-dev
+libode-dev
 libomp-dev
 libopencv-dev
 liborocos-kdl-dev
