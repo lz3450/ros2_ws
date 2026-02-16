@@ -1,9 +1,9 @@
 FROM scratch
-ADD rootfs-amd64-ubuntu-jammy.tar.zst /
+ADD rootfs-amd64-ubuntu-noble.tar.zst /
 
 # Install required packages
-RUN apt-get update && apt-get upgrade -y
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential
+RUN apt update && apt upgrade -y
+RUN DEBIAN_FRONTEND=noninteractive apt install -y build-essential
 
 # ssh
 RUN ssh-keygen -A
@@ -22,11 +22,11 @@ EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
 
 # Build the image
-# docker build --no-cache -t humble:init -f Containerfile .
+# docker build --no-cache -t jazzy:init -f Containerfile .
 
 # Run the container in interactive mode
-# docker run -i -t --rm -u root -p 2222:22 --name humble -h HUMBLE <REPOSITORY:TAG> /bin/bash
+# docker run -i -t --rm -u root -p 2222:22 --name jazzy -h JAZZY <REPOSITORY:TAG> /bin/bash
 
 # Run the container in detached mode
-# docker run -d --rm -u root -p 2222:22 --name humble -h HUMBLE <REPOSITORY:TAG>
-# docker run -d --rm -u root -p 2222:22 --name humble -h HUMBLE --mount type=bind,source=/home/kzl/LFS,target=/home/kzl/LFS --mount type=bind,source=/home/kzl/Projects/ros2_ws,target=/home/kzl/Projects/ros2_ws <REPOSITORY:TAG>
+# docker run -d --rm -u root -p 2222:22 --name jazzy -h JAZZY <REPOSITORY:TAG>
+# docker run -d --rm -u root -p 2222:22 --name jazzy -h JAZZY --mount type=bind,source=/home/kzl/LFS,target=/home/kzl/LFS --mount type=bind,source=/home/kzl/Projects/ros2_ws,target=/home/kzl/Projects/ros2_ws <REPOSITORY:TAG>
