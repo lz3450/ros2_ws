@@ -5,14 +5,11 @@ cmake-data
 docutils-common
 libapr1t64
 libaprutil1t64
-libarchive13t64
 libjsoncpp25
-libpython3.12t64
 librhash0
 libserf-1-1
 libsvn1
 libutf8proc3
-libuv1t64
 mercurial
 mercurial-common
 python3-argcomplete
@@ -75,6 +72,4 @@ python3-vcstools
 python3-wheel
 ros-build-essential
 ros-dev-tools
-sgml-base
 subversion
-xml-core
