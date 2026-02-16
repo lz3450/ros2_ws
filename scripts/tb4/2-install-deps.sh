@@ -12,7 +12,7 @@ umask 0022
 
 ################################################################################
 
-ROS_DISTRO=humble
+ROS_DISTRO=jazzy
 . ../lib.sh
 
 install_dep_pkgs dep-pkgs.txt

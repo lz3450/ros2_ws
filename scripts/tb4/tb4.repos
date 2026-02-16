@@ -2,16 +2,16 @@ repositories:
   navigation2:
     type: git
     url: https://github.com/ros-planning/navigation2.git
-    version: humble
+    version: jazzy
   turtlebot4:
     type: git
     url: https://github.com/turtlebot/turtlebot4.git
-    version: humble
+    version: jazzy
   turtlebot4_robot:
     type: git
     url: https://github.com/turtlebot/turtlebot4_robot.git
-    version: humble
+    version: jazzy
   turtlebot4_setup:
     type: git
     url: https://github.com/turtlebot/turtlebot4_setup.git
-    version: humble
+    version: jazzy
