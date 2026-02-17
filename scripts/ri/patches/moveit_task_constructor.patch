@@ -1,17 +1,17 @@
 diff --git a/core/src/cost_terms.cpp b/core/src/cost_terms.cpp
-index 9ddb94f..04ea233 100644
+index 9ddb94f..bdd47eb 100644
 --- a/core/src/cost_terms.cpp
 +++ b/core/src/cost_terms.cpp
-@@ -253,7 +253,7 @@ Clearance::Clearance(bool with_world, bool cumulative, std::string group_propert
+@@ -253,8 +253,6 @@ Clearance::Clearance(bool with_world, bool cumulative, std::string group_propert
    , distance_to_cost{ [](double d) { return 1.0 / (d + 1e-5); } } {}
  
  double Clearance::operator()(const SubTrajectory& s, std::string& comment) const {
 -	static const std::string PREFIX{ "Clearance: " };
-+	static constexpr std::string_view PREFIX{ "Clearance: " };
- 
+-
  	collision_detection::DistanceRequest request;
  	request.type =
-@@ -274,7 +274,7 @@ double Clearance::operator()(const SubTrajectory& s, std::string& comment) const
+ 	    cumulative ? collision_detection::DistanceRequestType::SINGLE : collision_detection::DistanceRequestType::GLOBAL;
+@@ -274,7 +272,7 @@ double Clearance::operator()(const SubTrajectory& s, std::string& comment) const
  	request.acm = &state->scene()->getAllowedCollisionMatrix();
  
  	// compute relevant distance data for state & robot
@@ -20,7 +20,7 @@ index 9ddb94f..04ea233 100644
  		collision_detection::DistanceResult result;
  		if (with_world)
  			state->scene()->getCollisionEnv()->distanceRobot(request, result, robot);
-@@ -297,8 +297,8 @@ double Clearance::operator()(const SubTrajectory& s, std::string& comment) const
+@@ -297,8 +295,8 @@ double Clearance::operator()(const SubTrajectory& s, std::string& comment) const
  		return result.minimum_distance;
  	} };
  
@@ -31,7 +31,7 @@ index 9ddb94f..04ea233 100644
  		                   distance.link_names[1]);
  	};
  
-@@ -313,10 +313,10 @@ double Clearance::operator()(const SubTrajectory& s, std::string& comment) const
+@@ -313,10 +311,10 @@ double Clearance::operator()(const SubTrajectory& s, std::string& comment) const
  		}
  		distance = distance_data.distance;
  		if (!cumulative)
@@ -44,7 +44,7 @@ index 9ddb94f..04ea233 100644
  	} else {  // check trajectory
  		for (size_t i = 0; i < s.trajectory()->getWayPointCount(); ++i) {
  			auto distance_data = check_distance(state, s.trajectory()->getWayPoint(i));
-@@ -327,7 +327,7 @@ double Clearance::operator()(const SubTrajectory& s, std::string& comment) const
+@@ -327,7 +325,7 @@ double Clearance::operator()(const SubTrajectory& s, std::string& comment) const
  			distance += distance_data.distance;
  		}
  		distance /= s.trajectory()->getWayPointCount();
