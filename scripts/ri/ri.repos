@@ -2,7 +2,7 @@ repositories:
   moveit2:
     type: git
     url: https://github.com/moveit/moveit2.git
-    version: 2.14.1
+    version: 2d780de168dc8e1dff597191066209351f5581ee
   moveit2_tutorials:
     type: git
     url: https://github.com/moveit/moveit2_tutorials.git

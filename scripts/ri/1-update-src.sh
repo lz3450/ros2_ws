@@ -31,7 +31,8 @@ get_src "$srcdir"/moveit2/moveit2.repos "$srcdir"
 # rm -rf "$srcdir"/xarm_ros2/thirdparty/realsense_gazebo_plugin
 
 ###
-# git -C "$srcdir"/xarm_ros2 apply $(realpath --relative-to="$srcdir/xarm_ros2" patches/xarm_ros2.patch)
+git -C "$srcdir"/moveit2 apply $(realpath --relative-to="$srcdir/moveit2" patches/moveit2.patch)
+git -C "$srcdir"/moveit_task_constructor apply $(realpath --relative-to="$srcdir/moveit_task_constructor" patches/moveit_task_constructor.patch)
 
 ################################################################################
 get_src deps.repos "$srcdir"

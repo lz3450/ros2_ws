@@ -1,0 +1,99 @@
+diff --git a/core/src/cost_terms.cpp b/core/src/cost_terms.cpp
+index 9ddb94f..04ea233 100644
+--- a/core/src/cost_terms.cpp
++++ b/core/src/cost_terms.cpp
+@@ -253,7 +253,7 @@ Clearance::Clearance(bool with_world, bool cumulative, std::string group_propert
+   , distance_to_cost{ [](double d) { return 1.0 / (d + 1e-5); } } {}
+ 
+ double Clearance::operator()(const SubTrajectory& s, std::string& comment) const {
+-	static const std::string PREFIX{ "Clearance: " };
++	static constexpr std::string_view PREFIX{ "Clearance: " };
+ 
+ 	collision_detection::DistanceRequest request;
+ 	request.type =
+@@ -274,7 +274,7 @@ double Clearance::operator()(const SubTrajectory& s, std::string& comment) const
+ 	request.acm = &state->scene()->getAllowedCollisionMatrix();
+ 
+ 	// compute relevant distance data for state & robot
+-	auto check_distance{ [=](const InterfaceState* state, const moveit::core::RobotState& robot) {
++	auto check_distance{ [this, &request](const InterfaceState* state, const moveit::core::RobotState& robot) {
+ 		collision_detection::DistanceResult result;
+ 		if (with_world)
+ 			state->scene()->getCollisionEnv()->distanceRobot(request, result, robot);
+@@ -297,8 +297,8 @@ double Clearance::operator()(const SubTrajectory& s, std::string& comment) const
+ 		return result.minimum_distance;
+ 	} };
+ 
+-	auto collision_comment = [=](const auto& distance) {
+-		return fmt::format(PREFIX + "allegedly valid solution collides between '{}' and '{}'", distance.link_names[0],
++	auto collision_comment = [](const auto& distance) {
++		return fmt::format("Clearance: allegedly valid solution collides between '{}' and '{}'", distance.link_names[0],
+ 		                   distance.link_names[1]);
+ 	};
+ 
+@@ -313,10 +313,10 @@ double Clearance::operator()(const SubTrajectory& s, std::string& comment) const
+ 		}
+ 		distance = distance_data.distance;
+ 		if (!cumulative)
+-			comment = fmt::format(PREFIX + "distance {} between '{}' and '{}'", distance, distance_data.link_names[0],
++			comment = fmt::format("Clearance: distance {} between '{}' and '{}'", distance, distance_data.link_names[0],
+ 			                      distance_data.link_names[1]);
+ 		else
+-			comment = fmt::format(PREFIX + "cumulative distance {}", distance);
++			comment = fmt::format("Clearance: cumulative distance {}", distance);
+ 	} else {  // check trajectory
+ 		for (size_t i = 0; i < s.trajectory()->getWayPointCount(); ++i) {
+ 			auto distance_data = check_distance(state, s.trajectory()->getWayPoint(i));
+@@ -327,7 +327,7 @@ double Clearance::operator()(const SubTrajectory& s, std::string& comment) const
+ 			distance += distance_data.distance;
+ 		}
+ 		distance /= s.trajectory()->getWayPointCount();
+-		comment = fmt::format(PREFIX + "average{} distance: {}", (cumulative ? " cumulative" : ""), distance);
++		comment = fmt::format("Clearance: average{} distance: {}", (cumulative ? " cumulative" : ""), distance);
+ 	}
+ 
+ 	return distance_to_cost(distance);
+diff --git a/core/src/stage.cpp b/core/src/stage.cpp
+index 8ececa5..8d913b3 100644
+--- a/core/src/stage.cpp
++++ b/core/src/stage.cpp
+@@ -909,8 +909,8 @@ bool Connecting::compatible(const InterfaceState& from_state, const InterfaceSta
+ 	const planning_scene::PlanningSceneConstPtr& from = from_state.scene();
+ 	const planning_scene::PlanningSceneConstPtr& to = to_state.scene();
+ 
+-	auto false_with_debug = [](auto... args) {
+-		RCLCPP_DEBUG_STREAM(rclcpp::get_logger("Connecting"), fmt::format(args...));
++	auto false_with_debug = [this](const std::string& fmt_str, auto... args) {
++		RCLCPP_DEBUG_STREAM(rclcpp::get_logger("Connecting"), fmt::vformat(fmt_str, fmt::make_format_args(args...)));
+ 		return false;
+ 	};
+ 
+diff --git a/visualization/motion_planning_tasks/src/remote_task_model.cpp b/visualization/motion_planning_tasks/src/remote_task_model.cpp
+index d28cfd6..8926cba 100644
+--- a/visualization/motion_planning_tasks/src/remote_task_model.cpp
++++ b/visualization/motion_planning_tasks/src/remote_task_model.cpp
+@@ -526,7 +526,7 @@ QVariant RemoteSolutionModel::data(const QModelIndex& index, int role) const {
+ 					return item.creation_rank;
+ 				case 1:
+ 					if (std::isinf(item.cost))
+-						return tr(u8"∞");
++						return tr("∞");
+ 					if (std::isnan(item.cost))
+ 						return QVariant();
+ 					return QLocale().toString(item.cost, 'f', 4);
+diff --git a/visualization/motion_planning_tasks/src/task_list_model.cpp b/visualization/motion_planning_tasks/src/task_list_model.cpp
+index 3cd6466..7c471d5 100644
+--- a/visualization/motion_planning_tasks/src/task_list_model.cpp
++++ b/visualization/motion_planning_tasks/src/task_list_model.cpp
+@@ -61,9 +61,9 @@ QVariant TaskListModel::horizontalHeader(int column, int role) {
+ 				case 0:
+ 					return tr("name");
+ 				case 1:
+-					return tr(u8"✓");
++					return tr("✓");
+ 				case 2:
+-					return tr(u8"✗");
++					return tr("✗");
+ 				case 3:
+ 					return tr("time");
+ 			}

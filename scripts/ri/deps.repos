@@ -102,7 +102,7 @@ repositories:
   osqp_vendor:
     type: git
     url: https://github.com/tier4/osqp_vendor.git
-    version: 0.2.0
+    version: 3759ffce266ab7043fc809ff2a548e45d413d144
   picknik_controllers:
     type: git
     url: https://github.com/PickNikRobotics/picknik_controllers.git
