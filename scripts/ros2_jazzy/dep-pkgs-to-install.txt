@@ -252,6 +252,7 @@ libspdlog-dev
 libspdlog1.12
 libsqlite3-dev
 libsrt1.5-gnutls
+libssh-4
 libssh-gcrypt-4
 libssl-dev
 libsuperlu6
