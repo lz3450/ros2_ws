@@ -6,8 +6,12 @@ elif [ -n "$ZSH_VERSION" ]; then
     ROS2_SHELL="zsh"
 else
     echo "Unsupported shell"
+    return 1
 fi
 echo "ROS2_WS=$ROS2_WS"
+
+###
+export DISPLAY=":0"
 
 ### Domain ID
 export ROS_DOMAIN_ID=77
