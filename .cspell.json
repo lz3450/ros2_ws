@@ -8,6 +8,7 @@
         "behaviortree",
         "bondpy",
         "bringup",
+        "costmap",
         "dartsim",
         "eigen",
         "gps",
